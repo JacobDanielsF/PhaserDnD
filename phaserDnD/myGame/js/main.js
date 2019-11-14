@@ -1,8 +1,13 @@
+// CMPM 179
+// Baby DnD (tentative title)
+// main.js
+// DnD Class Quiz
+
 var game;
 
 // game settings
 var config = {
-    width: 800,
+    width: 900,
     height: 600,
     renderer: Phaser.AUTO,
     antialias: false,
@@ -14,6 +19,7 @@ window.onload = function() {
 	
 	game.state.add('Start', Start);
 	game.state.add('Question', Question);
+	game.state.add('Results', Results);
 	
 	game.state.start('Start');
 }
@@ -26,22 +32,34 @@ var BUTTON_HEIGHT = 71;
 var PROPERTIES =
 {
 	CLASS_BUCKETS: {
-		FIGHTER: 0,
-		BARBARIAN: 0,
-		PALADIN: 0,
-		CLERIC: 0,
-		ROUGE: 0,
-		BARD: 0,
-		RANGER: 0,
-		SORCERER: 0,
-		WARLOCK: 0,
-		WIZARD: 0,
-		MONK: 0,
-		DRUID: 0,
+		Fighter: 0,
+		Barbarian: 0,
+		Paladin: 0,
+		Cleric: 0,
+		Rogue: 0,
+		Bard: 0,
+		Ranger: 0,
+		Sorcerer: 0,
+		Warlock: 0,
+		Wizard: 0,
+		Monk: 0,
+		Druid: 0,
 	},
 	
 	QUESTION: 0,
 };
+
+function Shuffle(t){
+	var n = t.length-1;
+	while (n >= 0) {
+		var k = game.rnd.integerInRange(0, n);
+		var temp = t[n];
+		t[n] = t[k];
+		t[k] = temp;
+		n--;
+	}
+	return t;
+}
 
 var CLASS_QUESTIONS =
 {
@@ -50,14 +68,146 @@ var CLASS_QUESTIONS =
 		Q: "You’re ambushed by an enemy!\nWhat do you have on you?",
 		A:
 		{
-			[0]: { TEXT: "A heavy greatsword!", REWARD: ["BARBARIAN", "PALADIN", "FIGHTER", "CLERIC"] },
-			[1]: { TEXT: "A short sword hidden in your boot!", REWARD: ["ROUGE", "BARD", "RANGER"] },
-			[2]: { TEXT: "Weapon? What weapon? You just need the spells in your head!", REWARD: ["SORCERER", "WARLOCK", "WIZARD"] },
-			[3]: { TEXT: "The two fists nature gave me!", REWARD: ["MONK"] }
+			[0]: { TEXT: "A heavy greatsword!", REWARD: ["Barbarian", "Paladin", "Fighter", "Cleric"] },
+			[1]: { TEXT: "A short sword hidden in your boot!", REWARD: ["Rogue", "Bard", "Ranger"] },
+			[2]: { TEXT: "Weapon? What weapon? You just need the spells in your head!", REWARD: ["Sorcerer", "Warlock", "Wizard"] },
+			[3]: { TEXT: "The two fists nature gave me!", REWARD: ["Monk"] }
 		}
 	},
 	
+	Q2:
+	{
+		Q: "You're on a long journey.\nAfter the bare essentials,\nwhat extra things will you pack?",
+		A:
+		{
+			[0]: { TEXT: "An extra book to read.", REWARD: ["Wizard"] },
+			[1]: { TEXT: "An instrument to provide entertainment.", REWARD: ["Bard"] },
+			[2]: { TEXT: "Workout gear to keep up those gains.", REWARD: ["Barbarian", "Fighter"] },
+			[3]: { TEXT: "Extra food that you like.", REWARD: ["Ranger", "Druid", "Monk"] },
+			[4]: { TEXT: "A tome for the being you worship.", REWARD: ["Warlock", "Paladin", "Cleric"] }
+		}
+	},
 	
+	Q3:
+	{
+		Q: "You are approached by an enemy!\nWhat do you do?",
+		A:
+		{
+			[0]: { TEXT: "Try to get the help of a higher power.", REWARD: ["Paladin", "Cleric", "Warlock"] },
+			[1]: { TEXT: "Try to get on their good side before anything happens.", REWARD: ["Bard", "Sorcerer"] },
+			[2]: { TEXT: "KILL!!", REWARD: ["Barbarian", "Fighter", "Rogue", "Monk"] },
+		}
+	},
+	
+	Q4:
+	{
+		Q: "You’re in a tomb and there’s a door with a puzzle on it.\nWhat do you do to get through it?",
+		A:
+		{
+			[0]: { TEXT: "Try to find a different way around it.", REWARD: ["Rogue", "Ranger", "Druid", "Sorcerer"] },
+			[1]: { TEXT: "Just first try to open it...", REWARD: ["Bard", "Monk"] },
+			[2]: { TEXT: "Just SMASH THROUGH IT.", REWARD: ["Barbarian", "Fighter"] },
+			[3]: { TEXT: "Solve the puzzle.", REWARD: ["Wizard", "Cleric"] },
+		}
+	},
+	
+	Q5:
+	{
+		Q: "When you are in trouble, what do you fall back on?",
+		A:
+		{
+			[0]: { TEXT: "The being I worship!", REWARD: ["Paladin", "Cleric", "Warlock"] },
+			[1]: { TEXT: "My friends! Help me!", REWARD: ["Bard", "Druid"] },
+			[2]: { TEXT: "Nothing! I'm confient in my ability.", REWARD: ["Barbarian", "Fighter", "Rogue", "Sorcerer"] },
+			[3]: { TEXT: "The clarity of my mind!", REWARD: ["Monk", "Ranger", "Wizard"] },
+		}
+	},
+	
+	Q6:
+	{
+		Q: "How much patience do you have solving a rubix cube?",
+		A:
+		{
+			[0]: { TEXT: "I sit there until it's done.", REWARD: ["Wizard", "Monk", "Ranger"] },
+			[1]: { TEXT: "I'll smash it to bits!", REWARD: ["Barbarian", "Sorcerer"] },
+			[2]: { TEXT: "I immediately give up.", REWARD: ["Druid", "Paladin"] },
+			[3]: { TEXT: "I'll try it out, see what happens.", REWARD: ["Bard", "Fighter"] },
+			[4]: { TEXT: "I'll get someone else to solve it for me.", REWARD: ["Rogue", "Warlock"] },
+		}
+	},
+	
+	Q7:
+	{
+		Q: "There’s a test coming up.\nWhat do you do to prepare for it?",
+		A:
+		{
+			[0]: { TEXT: "Study studiously.", REWARD: ["Wizard", "Monk", "Cleric"] },
+			[1]: { TEXT: "I can get away with cheating.", REWARD: ["Warlock", "Rogue"] },
+			[2]: { TEXT: "I'll just wing it.", REWARD: ["Sorcerer"] },
+		}
+	},
+	
+	Q8:
+	{
+		Q: "You are in the treasury of a dragon.\nYou have time to pick up one object before it wakes up.\nWhat do you look for?",
+		A:
+		{
+			[0]: { TEXT: "Go for the gold!", REWARD: ["Rogue"] },
+			[1]: { TEXT: "Play it safe and leave.", REWARD: ["Monk", "Ranger", "Druid"] },
+			[2]: { TEXT: "Find some rare books.", REWARD: ["Bard", "Wizard"] },
+			[3]: { TEXT: "An elegant sword or shield.", REWARD: ["Fighter", "Barbarian", "Paladin"] },
+		}
+	},
+	
+	Q9:
+	{
+		Q: "If you pick up a sword, why do you do it?",
+		A:
+		{
+			[0]: { TEXT: "For the skill!", REWARD: ["Fighter", "Wizard"] },
+			[1]: { TEXT: "To defend others!", REWARD: ["Paladin", "Cleric"] },
+			[2]: { TEXT: "To fight!", REWARD: ["Barbarian"] },
+			[3]: { TEXT: "For my own gain...", REWARD: ["Rogue", "Sorcerer", "Warlock"] },
+		}
+	},
+	
+	Q10:
+	{
+		Q: "Where do you feel most at home?",
+		A:
+		{
+			[0]: { TEXT: "A battlefield.", REWARD: ["Barbarian", "Fighter"] },
+			[1]: { TEXT: "In the forest.", REWARD: ["Druid", "Ranger"] },
+			[2]: { TEXT: "In a library.", REWARD: ["Wizard", "Sorcerer"] },
+			[3]: { TEXT: "The temple of my god.", REWARD: ["Cleric", "Monk", "Paladin"] },
+			[4]: { TEXT: "A busy town square.", REWARD: ["Bard"] },
+		}
+	},
+	
+	Q11:
+	{
+		Q: "What kind of company do you keep?",
+		A:
+		{
+			[0]: { TEXT: "I hang out with shady people.", REWARD: ["Rogue", "Warlock"] },
+			[1]: { TEXT: "I'm friends with everyone!", REWARD: ["Bard", "Fighter"] },
+			[2]: { TEXT: "The animals in the forest.", REWARD: ["Druid", "Ranger"] },
+			[3]: { TEXT: "Fellow followers of my faith.", REWARD: ["Cleric", "Monk", "Paladin"] },
+		}
+	},
+	
+	Q12:
+	{
+		Q: "What do you prefer to do in a battle?",
+		A:
+		{
+			[0]: { TEXT: "Assist my friend when they need it.", REWARD: ["Bard", "Druid"] },
+			[1]: { TEXT: "Heal those in need.", REWARD: ["Cleric"] },
+			[2]: { TEXT: "Be on the front lines.", REWARD: ["Barbarian", "Fighter", "Paladin"] },
+			[3]: { TEXT: "I like to see explosions.", REWARD: ["Wizard", "Sorcerer", "Warlock"] },
+			[4]: { TEXT: "Look for the perfect opening to strike.", REWARD: ["Rogue", "Ranger"] },
+		}
+	},
 }
 
 var Start = function(game) {};
@@ -75,8 +225,6 @@ Start.prototype = {
 		{
 			PROPERTIES.CLASS_BUCKETS[key] = 0;
 		}
-		
-		//console.log(PROPERTIES.CLASS_BUCKETS);
 		
 		function onUp(button, pointer, isOver)
 		{
@@ -115,7 +263,6 @@ Question.prototype = {
 	create: function()
 	{
 		QVal = "Q" + PROPERTIES.QUESTION;
-		//console.log(QVal);
 		
 		QData = CLASS_QUESTIONS[QVal];
 		Q = QData.Q;
@@ -124,27 +271,34 @@ Question.prototype = {
 		QText.anchor.x = 0.5;
 		QText.anchor.y = 0.5;
 		
+		function nextState()
+		{
+			if (PROPERTIES.QUESTION < Object.keys(CLASS_QUESTIONS).length)
+			{
+				PROPERTIES.QUESTION++;
+				game.state.start('Question');
+			}
+			else
+			{
+				PROPERTIES.QUESTION = 0;
+				game.state.start('Results');
+			}
+		}
+		
 		if (Object.keys(QData.A).length >= 1)
 		{
 			function onUp1(button, pointer, isOver)
 			{
 				if (isOver)
 				{
-					//console.log(PROPERTIES.CLASS_BUCKETS);
-					//console.log(QData.A[0].REWARD);
-					//console.log(QData.A[0]);
 					var rewards = QData.A[0].REWARD;
 					
 					for (var k = 0; k < rewards.length; k++)
 					{
-						//console.log(rewards[k]);
 						PROPERTIES.CLASS_BUCKETS[rewards[k]]++;
 					}
 					
-					//console.log(PROPERTIES.CLASS_BUCKETS);
-					
-					PROPERTIES.QUESTION = 0;
-					game.state.start('Start');
+					nextState();
 				}
 			}
 			
@@ -165,21 +319,14 @@ Question.prototype = {
 			{
 				if (isOver)
 				{
-					//console.log(PROPERTIES.CLASS_BUCKETS);
-					//console.log(QData.A[1].REWARD);
-					//console.log(QData.A[1]);
 					var rewards = QData.A[1].REWARD;
 					
 					for (var k = 0; k < rewards.length; k++)
 					{
-						//console.log(rewards[k]);
 						PROPERTIES.CLASS_BUCKETS[rewards[k]]++;
 					}
 					
-					//console.log(PROPERTIES.CLASS_BUCKETS);
-					
-					PROPERTIES.QUESTION = 0;
-					game.state.start('Start');
+					nextState();
 				}
 			}
 			
@@ -200,21 +347,14 @@ Question.prototype = {
 			{
 				if (isOver)
 				{
-					//console.log(PROPERTIES.CLASS_BUCKETS);
-					//console.log(QData.A[i].REWARD);
-					//console.log(QData.A[2]);
 					var rewards = QData.A[2].REWARD;
 					
 					for (var k = 0; k < rewards.length; k++)
 					{
-						//console.log(rewards[k]);
 						PROPERTIES.CLASS_BUCKETS[rewards[k]]++;
 					}
 					
-					//console.log(PROPERTIES.CLASS_BUCKETS);
-					
-					PROPERTIES.QUESTION = 0;
-					game.state.start('Start');
+					nextState();
 				}
 			}
 			
@@ -235,21 +375,14 @@ Question.prototype = {
 			{
 				if (isOver)
 				{
-					//console.log(PROPERTIES.CLASS_BUCKETS);
-					//console.log(QData.A[3].REWARD);
-					//console.log(QData.A[3]);
 					var rewards = QData.A[3].REWARD;
 					
 					for (var k = 0; k < rewards.length; k++)
 					{
-						//console.log(rewards[k]);
 						PROPERTIES.CLASS_BUCKETS[rewards[k]]++;
 					}
 					
-					//console.log(PROPERTIES.CLASS_BUCKETS);
-					
-					PROPERTIES.QUESTION = 0;
-					game.state.start('Start');
+					nextState();
 				}
 			}
 			
@@ -270,21 +403,14 @@ Question.prototype = {
 			{
 				if (isOver)
 				{
-					//console.log(PROPERTIES.CLASS_BUCKETS);
-					//console.log(QData.A[4].REWARD);
-					//console.log(QData.A[4]);
 					var rewards = QData.A[4].REWARD;
 					
 					for (var k = 0; k < rewards.length; k++)
 					{
-						//console.log(rewards[k]);
 						PROPERTIES.CLASS_BUCKETS[rewards[k]]++;
 					}
 					
-					//console.log(PROPERTIES.CLASS_BUCKETS);
-					
-					PROPERTIES.QUESTION = 0;
-					game.state.start('Start');
+					nextState();
 				}
 			}
 			
@@ -305,4 +431,86 @@ Question.prototype = {
 	{
 		
 	}
+}
+
+
+var Results = function(game) {};
+Results.prototype = {
+	preload: function() 
+	{
+		
+	},
+	
+	create: function() 
+	{
+		RText = game.add.text(game.world.centerX, 120, "Your results:", { font: MAIN_FONT, fontStyle: MAIN_STYLE, fontSize: '25px', fill: '#ffffff', align: "center" });
+		RText.anchor.x = 0.5;
+		RText.anchor.y = 0.5;
+		
+		var temp = ["Fighter", "Barbarian", "Paladin", "Cleric", "Rogue", "Bard", "Ranger", "Sorcerer", "Warlock", "Wizard", "Monk", "Druid"],
+		temp = Shuffle(temp);
+		var results = [];
+		
+		for (var i = 0; i < 4; i++)
+		{
+			var bestScore = 0;
+			var bestClass = null;
+			
+			for (var c = 0; c < temp.length; c++)
+			{
+				if (!results.includes(temp[c]))
+				{
+					var thisBucket = PROPERTIES.CLASS_BUCKETS[temp[c]];
+					
+					if (thisBucket > bestScore)
+					{
+						bestScore = thisBucket;
+						bestClass = temp[c];
+					}
+				}
+			}
+			
+			results.push(bestClass);
+		}
+		
+		for (var i = 0; i < results.length; i++)
+		{
+			var num = i+1;
+			var newString = num + ": " + results[i] + " (+" + PROPERTIES.CLASS_BUCKETS[results[i]] + ")";
+			
+			newText = game.add.text(game.world.centerX - 90, 200 + (50*i), newString, { font: MAIN_FONT, fontStyle: MAIN_STYLE, fontSize: '20px', fill: '#ffffff', align: "left" });
+			newText.anchor.x = 0;
+			newText.anchor.y = 0.5;
+		}
+		
+		function onUp(button, pointer, isOver)
+		{
+			for (var key in PROPERTIES.CLASS_BUCKETS)
+			{
+				PROPERTIES.CLASS_BUCKETS[key] = 0;
+			}
+			
+			if (isOver)
+			{
+				PROPERTIES.QUESTION = 1;
+				game.state.start('Question');
+			}
+		}
+		
+		button = game.add.button(game.world.centerX, game.world.centerY + 180, 'button', onUp, this, 2, 1, 0);
+		button.anchor.x = 0.5;
+		button.anchor.y = 0.5;
+		
+		buttonText = game.add.text(game.world.centerX, game.world.centerY + 183, 'Restart Quiz', { font: MAIN_FONT, fontStyle: MAIN_STYLE, fontSize: '20px', fill: '#ffffff', align: "center" });
+		buttonText.anchor.x = 0.5;
+		buttonText.anchor.y = 0.5;
+		
+		button.scale.setTo((buttonText.width/BUTTON_WIDTH) + 0.15, (buttonText.height/BUTTON_HEIGHT) + 0.3);
+	},
+	
+	update: function() 
+	{
+		
+	}
+
 }
