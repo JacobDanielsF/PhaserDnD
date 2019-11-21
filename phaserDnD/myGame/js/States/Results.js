@@ -7,7 +7,7 @@ Results.prototype = {
 	
 	create: function() 
 	{
-		RText = game.add.text(game.world.centerX, 200, "Your results:", titleTextStyle);
+		RText = game.add.text(game.world.centerX, standardTitleHeight, "Your results:", titleTextStyle);
 		RText.anchor.x = 0.5;
 		RText.anchor.y = 0.5;
 		
@@ -42,7 +42,7 @@ Results.prototype = {
 			var num = i+1;
 			var newString = num + ": " + results[i] + " (+" + PROPERTIES.CLASS_BUCKETS[results[i]] + ")";
 			
-			newText = game.add.text(game.world.centerX - 90, 300 + (50*i), newString, textStyle);
+			newText = game.add.text(game.world.centerX - 90, standardTextHeight + (50*i), newString, textStyle);
 			newText.anchor.x = 0;
 			newText.anchor.y = 0.5;
 		}
@@ -57,16 +57,16 @@ Results.prototype = {
 			if (isOver)
 			{
 				PROPERTIES.QUESTION = 1;
-				game.state.start('Question');
+				game.state.start('Race');
 			}
 		}
 		
-		button = game.add.button(game.world.centerX, game.world.centerY + 140, 'button', onUp, this, 2, 1, 0);
+		button = game.add.button(game.world.centerX, game.world.centerY + 150, 'button', onUp, this, 2, 1, 0);
 		button.anchor.x = 0.5;
 		button.anchor.y = 0.5;
 		button.alpha = .5;
 
-		buttonText = game.add.text(game.world.centerX, game.world.centerY + 143, 'Restart Quiz', textStyle);
+		buttonText = game.add.text(game.world.centerX, game.world.centerY + 153, 'Choose race!', textStyle);
 		buttonText.anchor.x = 0.5;
 		buttonText.anchor.y = 0.5;
 		

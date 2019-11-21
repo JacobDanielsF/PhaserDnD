@@ -9,21 +9,20 @@ Question.prototype = {
 		QData = CLASS_QUESTIONS[QVal];
 		Q = QData.Q;
 		
-		QText = game.add.text(game.world.centerX, 200, Q, titleTextStyle);
+		QText = game.add.text(game.world.centerX, standardTitleHeight, Q, titleTextStyle);
 		QText.anchor.x = 0.5;
 		QText.anchor.y = 0.5;
 
-		var answerStartHeight = 350;		
 		//iterate through the num of answers for the question
 		for (let i = 0; i < Object.keys(QData.A).length; i++) {
 
 			//create button for the answer	
-			button = new AnswerButton(game, game.world.centerX, answerStartHeight + (75 * i), 'button',
+			button = new AnswerButton(game, game.world.centerX, standardTextHeight + (75 * i), 'button',
 				this, QData.A[i].REWARD);
 			game.add.existing(button);
 			
 			//put the answer text over the button
-			var answerText = game.add.text(game.world.centerX, answerStartHeight + (75 * i) + 3, 
+			var answerText = game.add.text(game.world.centerX, standardTextHeight + (75 * i) + 3, 
 				QData.A[i].TEXT, textStyle);
 			answerText.anchor.x = 0.5;
 			answerText.anchor.y = 0.5;

@@ -7,8 +7,8 @@ var game;
 
 // game settings
 var config = {
-    width: 1100,
-    height: 800,
+    width: 900,
+    height: 700,
     renderer: Phaser.AUTO,
     antialias: false,
 }
@@ -19,7 +19,8 @@ window.onload = function() {
 	game.state.add('Intro', Intro);
 	game.state.add('Question', Question);
 	game.state.add('Results', Results);
-	
+	game.state.add('Race', Race);
+
 	game.state.start('Intro');
 }
 
@@ -28,6 +29,11 @@ window.onload = function() {
 var titleTextStyle = { font: 'PT Serif', fontStyle: 'bold',  fontSize: '43px',
 	fill: '#FFFFFF', align: "center", wordWrap: true, wordWrapWidth: 800 };
 var textStyle = { font: 'Overlock', fontSize: '28px', fill: '#FFFFFF', align: "center" };
+
+//use this to keep header heights consistent
+var standardTitleHeight = 170;
+//this is for paragraph / bullet point heights
+var standardTextHeight = 300;
 
 var BUTTON_WIDTH = 193;
 var BUTTON_HEIGHT = 71;

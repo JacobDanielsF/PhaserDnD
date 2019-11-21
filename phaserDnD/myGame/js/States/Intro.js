@@ -45,32 +45,33 @@ Intro.prototype = {
 	},
 
 	makeText: function() {
-		var title = game.add.text(game.world.centerX, 225 + (75 * 0) + 3, 
+
+		var title = game.add.text(game.world.centerX, standardTitleHeight + (75 * 0) + 3, 
 			"Welcome to What is Not Called Baby DnD!", titleTextStyle);
 		title.anchor.x = 0.5;
 		title.anchor.y = 0.5;
 
-		var description = game.add.text(game.world.centerX, 225 + (100 * 1) + 3, 
+		var description = game.add.text(game.world.centerX, standardTitleHeight + (100 * 1) + 3, 
 		"We're not patronizing!!!", textStyle);
 		description.anchor.x = 0.5;
 		description.anchor.y = 0.5;
 
-		description = game.add.text(game.world.centerX, 225 + (100 * 2) + 3, 
+		description = game.add.text(game.world.centerX, standardTitleHeight + (100 * 2) + 3, 
 		"This tool will help you create a level 1 character in D&D edition 5!", textStyle);
 		description.anchor.x = 0.5;
 		description.anchor.y = 0.5;
 
-		description = game.add.text(game.world.centerX, 225 + (100 * 3) + 3, 
+		description = game.add.text(game.world.centerX, standardTitleHeight + (100 * 3) + 3, 
 		"Go ahead and...", textStyle);
 		description.anchor.x = 0.5;
 		description.anchor.y = 0.5;
 
-		var button = game.add.button(game.world.centerX, 225 + (100 * 4), 'button', this.onUp, this, 2, 1, 0);
+		var button = game.add.button(game.world.centerX, standardTitleHeight + (100 * 4), 'button', this.onUp, this, 2, 1, 0);
 		button.anchor.x = 0.5;
 		button.anchor.y = 0.5;
 		button.alpha = .5;
 
-		var text = game.add.text(game.world.centerX, 225 + (100 * 4) + 4, "start quiz!", titleTextStyle);
+		var text = game.add.text(game.world.centerX, standardTitleHeight + (100 * 4) + 4, "start quiz!", titleTextStyle);
 		text.anchor.x = 0.5;
 		text.anchor.y = 0.5;
 		
