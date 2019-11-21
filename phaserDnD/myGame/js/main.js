@@ -7,8 +7,8 @@ var game;
 
 // game settings
 var config = {
-    width: 900,
-    height: 600,
+    width: 1100,
+    height: 800,
     renderer: Phaser.AUTO,
     antialias: false,
 }
@@ -16,7 +16,6 @@ var config = {
 // initialize states
 window.onload = function() {
 	game = new Phaser.Game(config);
-	
 	game.state.add('Intro', Intro);
 	game.state.add('Question', Question);
 	game.state.add('Results', Results);
@@ -24,12 +23,14 @@ window.onload = function() {
 	game.state.start('Intro');
 }
 
-var MAIN_FONT = 'Verdana'; // main font
-var MAIN_STYLE = 'bold'; // main font style
+
+//STYLE VARS
+var titleTextStyle = { font: 'PT Serif', fontStyle: 'bold',  fontSize: '43px',
+	fill: '#FFFFFF', align: "center", wordWrap: true, wordWrapWidth: 800 };
+var textStyle = { font: 'Overlock', fontSize: '28px', fill: '#FFFFFF', align: "center" };
+
 var BUTTON_WIDTH = 193;
 var BUTTON_HEIGHT = 71;
-var textStyle = { font: 'Verdana', fontStyle: 'bold', fontSize: '18px',
-	fill: '#ffffff', align: "center" };
 
 var PROPERTIES =
 {
@@ -51,23 +52,11 @@ var PROPERTIES =
 	QUESTION: 0,
 };
 
-function Shuffle(t){
-	var n = t.length-1;
-	while (n >= 0) {
-		var k = game.rnd.integerInRange(0, n);
-		var temp = t[n];
-		t[n] = t[k];
-		t[k] = temp;
-		n--;
-	}
-	return t;
-}
-
 var CLASS_QUESTIONS =
 {
 	Q1:
 	{
-		Q: "You’re ambushed by an enemy!\nWhat do you have on you?",
+		Q: "You’re ambushed by an enemy! What do you have on you?",
 		A:
 		{
 			[0]: { TEXT: "A heavy greatsword!", REWARD: ["Barbarian", "Paladin", "Fighter", "Cleric"] },
@@ -79,7 +68,7 @@ var CLASS_QUESTIONS =
 	
 	Q2:
 	{
-		Q: "You're on a long journey.\nAfter the bare essentials,\nwhat extra things will you pack?",
+		Q: "You're on a long journey. After the bare essentials, what extra things will you pack?",
 		A:
 		{
 			[0]: { TEXT: "An extra book to read.", REWARD: ["Wizard"] },
@@ -92,7 +81,7 @@ var CLASS_QUESTIONS =
 	
 	Q3:
 	{
-		Q: "You are approached by an enemy!\nWhat do you do?",
+		Q: "You are approached by an enemy! What do you do?",
 		A:
 		{
 			[0]: { TEXT: "Try to get the help of a higher power.", REWARD: ["Paladin", "Cleric", "Warlock"] },
@@ -103,7 +92,7 @@ var CLASS_QUESTIONS =
 	
 	Q4:
 	{
-		Q: "You’re in a tomb and there’s a door with a puzzle on it.\nWhat do you do to get through it?",
+		Q: "You’re in a tomb and there’s a door with a puzzle on it. What do you do to get through it?",
 		A:
 		{
 			[0]: { TEXT: "Try to find a different way around it.", REWARD: ["Rogue", "Ranger", "Druid", "Sorcerer"] },
@@ -140,7 +129,7 @@ var CLASS_QUESTIONS =
 	
 	Q7:
 	{
-		Q: "There’s a test coming up.\nWhat do you do to prepare for it?",
+		Q: "There’s a test coming up. What do you do to prepare for it?",
 		A:
 		{
 			[0]: { TEXT: "Study studiously.", REWARD: ["Wizard", "Monk", "Cleric"] },
@@ -151,7 +140,7 @@ var CLASS_QUESTIONS =
 	
 	Q8:
 	{
-		Q: "You are in the treasury of a dragon.\nYou have time to pick up one object before it wakes up.\nWhat do you look for?",
+		Q: "You are in the treasury of a dragon. You have time to pick up one object before it wakes up. What do you look for?",
 		A:
 		{
 			[0]: { TEXT: "Go for the gold!", REWARD: ["Rogue"] },

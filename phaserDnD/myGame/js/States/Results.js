@@ -7,7 +7,7 @@ Results.prototype = {
 	
 	create: function() 
 	{
-		RText = game.add.text(game.world.centerX, 120, "Your results:", { font: MAIN_FONT, fontStyle: MAIN_STYLE, fontSize: '25px', fill: '#ffffff', align: "center" });
+		RText = game.add.text(game.world.centerX, 200, "Your results:", titleTextStyle);
 		RText.anchor.x = 0.5;
 		RText.anchor.y = 0.5;
 		
@@ -42,7 +42,7 @@ Results.prototype = {
 			var num = i+1;
 			var newString = num + ": " + results[i] + " (+" + PROPERTIES.CLASS_BUCKETS[results[i]] + ")";
 			
-			newText = game.add.text(game.world.centerX - 90, 200 + (50*i), newString, { font: MAIN_FONT, fontStyle: MAIN_STYLE, fontSize: '20px', fill: '#ffffff', align: "left" });
+			newText = game.add.text(game.world.centerX - 90, 300 + (50*i), newString, textStyle);
 			newText.anchor.x = 0;
 			newText.anchor.y = 0.5;
 		}
@@ -61,11 +61,12 @@ Results.prototype = {
 			}
 		}
 		
-		button = game.add.button(game.world.centerX, game.world.centerY + 180, 'button', onUp, this, 2, 1, 0);
+		button = game.add.button(game.world.centerX, game.world.centerY + 140, 'button', onUp, this, 2, 1, 0);
 		button.anchor.x = 0.5;
 		button.anchor.y = 0.5;
-		
-		buttonText = game.add.text(game.world.centerX, game.world.centerY + 183, 'Restart Quiz', { font: MAIN_FONT, fontStyle: MAIN_STYLE, fontSize: '20px', fill: '#ffffff', align: "center" });
+		button.alpha = .5;
+
+		buttonText = game.add.text(game.world.centerX, game.world.centerY + 143, 'Restart Quiz', textStyle);
 		buttonText.anchor.x = 0.5;
 		buttonText.anchor.y = 0.5;
 		
@@ -77,4 +78,16 @@ Results.prototype = {
 		
 	}
 
+}
+
+function Shuffle(t){
+	var n = t.length-1;
+	while (n >= 0) {
+		var k = game.rnd.integerInRange(0, n);
+		var temp = t[n];
+		t[n] = t[k];
+		t[k] = temp;
+		n--;
+	}
+	return t;
 }

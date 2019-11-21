@@ -6,6 +6,8 @@ function AnswerButton(game, x, y, key, callbackContext, rewards) {
 	this.anchor.y = 0.5;
 
 	this.rewards = rewards;
+
+	this.alpha = .7;
 }
 
 AnswerButton.prototype = Object.create(Phaser.Button.prototype);
@@ -14,13 +16,8 @@ AnswerButton.prototype.constructor = AnswerButton;
 //when button is pressed, call this funct
 function onUp(button, pointer, isOver)
 {
-	console.log("button pressed!");
-	console.log(isOver);
 	if (isOver)
 	{	
-		// rewards = rewards;
-			console.log(button.rewards);
-
 		for (var k = 0; k < button.rewards.length; k++)
 		{
 			PROPERTIES.CLASS_BUCKETS[button.rewards[k]]++;
