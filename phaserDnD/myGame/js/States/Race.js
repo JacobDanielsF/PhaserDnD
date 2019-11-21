@@ -25,7 +25,7 @@ Race.prototype = {
 
 		//add first row of races
 		for (let j = game.width - game.width/5; j > 0; j -= game.width/5) {
-			var race = new RaceIcon(j, 150, 'tempElf', 'wizard', game);
+			var race = new RaceIcon(j, 150, 'tempElf', 'elf', game);
 			game.add.existing(race);
 		}
 
