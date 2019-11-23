@@ -11,7 +11,7 @@ var config = {
     height: 700,
     renderer: Phaser.AUTO,
     antialias: false,
-}
+};
 
 // initialize states
 window.onload = function() {
@@ -22,7 +22,7 @@ window.onload = function() {
 	game.state.add('Race', Race);
 
 	game.state.start('Intro');
-}
+};
 
 
 //STYLE VARS
@@ -57,6 +57,34 @@ var PROPERTIES =
 	
 	QUESTION: 0,
 };
+
+var CLASS_DESCRIPTIONS =
+{
+	Fighter: "A master of combat, proficient with many weapons.",
+	Barbarian: "A fierce warrior full of battle rage.",
+	Paladin: "A holy soldier, bound by an oath.",
+	Cleric: "A divine preist who is faithful to a higher power.",
+	Rogue: "A master of stealth and deception, out for their own self-interests.",
+	Bard: "A curious musician with magical powers.",
+	Ranger: "A soldier of the wild, skilled in martial combat and nature magic.",
+	Sorcerer: "A spellcaster who possesses innate magical power.",
+	Warlock: "A magic user who draws their power from pacts with supernatural entities.",
+	Wizard: "A spellcaster who is dedicated to their magical studies.",
+	Monk: "A martial artist with a deep spiritual connection.",
+	Druid: "A nature-bound priest with a wide variety of nature-based powers.",
+};
+
+var RACE_DESCRIPTIONS =
+{
+	Dwarf: "A short, stout and stubborn race who traditionally live underground.",
+	Elf: "A graceful, ancient race with great interest in adventure.",
+	Dragonborn: "Half-dragon humanoids with unique origins and skills.",
+	Halfling: "A race of smallish people who possess great stealth and social skills",
+	Human: "The most average race. Humans have a bit of skill in many areas.",
+	Gnome: "A very enthusiastic and curious race who enjoy a good prank.",
+	Half-orc: "A tall and strong race descending from orcs. Often prejudiced.",
+	Tiefling: "A race of demonic humanoids who are widely prejudiced wherever they go.",
+}
 
 var CLASS_QUESTIONS =
 {
@@ -205,4 +233,97 @@ var CLASS_QUESTIONS =
 			[4]: { TEXT: "Look for the perfect opening to strike.", REWARD: ["Rogue", "Ranger"] },
 		}
 	},
-}
+};
+
+
+var RACE_SUGGESTIONS =
+{
+	Barbarian:
+	{
+		TIP: "Barbarians require high strength and constitution.",
+		[0]: { TEXT: "These races provide high strength:", RACES: ["Half-orc", "Dragonborn"] },
+		[1]: { TEXT: "These races provide high constitution:", RACES: ["Dwarf", "Gnome"] },
+		[2]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
+	},
+	
+	Bard:
+	{
+		TIP: "Bards require high charima.",
+		[0]: { TEXT: "These races provide high charisma:", RACES: ["Half-elf", "Halfling", "Dragonborn", "Tiefling"] },
+		[1]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
+	},
+	
+	Cleric:
+	{
+		TIP: "Clerics require high wisdom.",
+		[0]: { TEXT: "These races provide high wisdom:", RACES: ["Dwarf"] },
+		[1]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
+	},
+	
+	Druid:
+	{
+		TIP: "Druids require high wisdom.",
+		[0]: { TEXT: "These races provide high wisdom:", RACES: ["Dwarf"] },
+		[1]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
+	},
+	
+	Fighter:
+	{
+		TIP: "Fighters require high strength or dexterity.",
+		[0]: { TEXT: "These races provide high strength:", RACES: ["Half-orc", "Dragonborn"] },
+		[1]: { TEXT: "These races provide high dexterity:", RACES: ["Elf", "Halfling"] },
+		[2]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
+	},
+	
+	Monk:
+	{
+		TIP: "Monks require high wisdom or dexterity.",
+		[0]: { TEXT: "These races provide high wisdom:", RACES: ["Dwarf"] },
+		[1]: { TEXT: "These races provide high dexterity:", RACES: ["Elf", "Halfling"] },
+		[2]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
+	},
+	
+	Paladin:
+	{
+		TIP: "Paladins require high strength or charisma.",
+		[0]: { TEXT: "These races provide high strength:", RACES: ["Half-orc"] },
+		[1]: { TEXT: "These races provide high charisma:", RACES: ["Half-elf", "Halfling", "Tiefling"] },
+		[2]: { TEXT: "These races have multiple skills:", RACES: ["Human", "Dragonborn"] },
+	},
+	
+	Ranger:
+	{
+		TIP: "Rangers require high dexterity or widsom.",
+		[0]: { TEXT: "These races provide high dexterity:", RACES: ["Elf", "Halfling"] },
+		[1]: { TEXT: "These races provide high wisdom:", RACES: ["Dwarf"] },
+		[2]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
+	},
+	
+	Rogue:
+	{
+		TIP: "Rogues require high dexterity.",
+		[0]: { TEXT: "These races provide high dexterity:", RACES: ["Elf", "Halfling"] },
+		[1]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
+	},
+	
+	Sorcerer:
+	{
+		TIP: "Sorcerers require high charisma.",
+		[0]: { TEXT: "These races provide high charisma:", RACES: ["Half-elf", "Halfling", "Tiefling", "Dragonborn"] },
+		[1]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
+	},
+	
+	Warlock:
+	{
+		TIP: "Warlocks require high charisma.",
+		[0]: { TEXT: "These races provide high charisma:", RACES: ["Half-elf", "Halfling", "Tiefling", "Dragonborn"] },
+		[1]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
+	},
+	
+	Wizard:
+	{
+		TIP: "Wizards require high intelligence.",
+		[0]: { TEXT: "These races provide high intelligence:", RACES: ["Elf", "Gnome", "Tiefling"] },
+		[1]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
+	},
+};
