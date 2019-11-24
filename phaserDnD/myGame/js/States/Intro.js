@@ -24,6 +24,9 @@ Intro.prototype = {
 			PROPERTIES.CLASS_BUCKETS[key] = 0;
 		}
 		
+		PROPERTIES.QUESTION = 0;
+		PROPERTIES.CLASS = null;
+		
 		//event timer to make sure all google texts are loaded before generating text
 		game.time.events.add(Phaser.Timer.SECOND, this.makeText, this);
 

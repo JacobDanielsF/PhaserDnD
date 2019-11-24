@@ -39,14 +39,32 @@ Results.prototype = {
 		
 		for (var i = 0; i < results.length; i++)
 		{
+			/*
 			var num = i+1;
 			var newString = num + ": " + results[i] + " (+" + PROPERTIES.CLASS_BUCKETS[results[i]] + ")";
 			
 			newText = game.add.text(game.world.centerX - 90, standardTextHeight + (50*i), newString, textStyle);
 			newText.anchor.x = 0;
 			newText.anchor.y = 0.5;
+			*/
+			
+			//create button for the answer	
+			button = new ClassButton(game, game.world.centerX, standardTextHeight + (75 * i), 'button',
+				this, results[i]);
+			game.add.existing(button);
+			
+			//put the answer text over the button
+			var classText = game.add.text(game.world.centerX, standardTextHeight + (75 * i) + 3, 
+				results[i], textStyle);
+			answerText.anchor.x = 0.5;
+			answerText.anchor.y = 0.5;
+
+			//scale the button to the size of the text
+			button.scale.setTo((answerText.width/BUTTON_WIDTH) + 0.15, 
+				(answerText.height/BUTTON_HEIGHT) + 0.3);
 		}
 		
+		/*
 		function onUp(button, pointer, isOver)
 		{
 			for (var key in PROPERTIES.CLASS_BUCKETS)
@@ -71,6 +89,7 @@ Results.prototype = {
 		buttonText.anchor.y = 0.5;
 		
 		button.scale.setTo((buttonText.width/BUTTON_WIDTH) + 0.15, (buttonText.height/BUTTON_HEIGHT) + 0.3);
+		*/
 	},
 	
 	update: function() 
