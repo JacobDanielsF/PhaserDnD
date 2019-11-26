@@ -1,7 +1,7 @@
 //prefab for all answers to quiz questions
 //creates the text object and the button to click on that answer
 function AnswerButton(game, x, y, key, callbackContext, rewards) {
-	Phaser.Button.call(this, game, x, y, key, onUp, callbackContext, 2, 1, 0);
+	Phaser.Button.call(this, game, x, y, key, onUpAnswer, callbackContext, 2, 1, 0);
 	this.anchor.x = 0.5;
 	this.anchor.y = 0.5;
 
@@ -14,7 +14,7 @@ AnswerButton.prototype = Object.create(Phaser.Button.prototype);
 AnswerButton.prototype.constructor = AnswerButton;
 
 //when button is pressed, call this funct
-function onUp(button, pointer, isOver)
+function onUpAnswer(button, pointer, isOver)
 {
 	if (isOver)
 	{	

@@ -49,47 +49,27 @@ Results.prototype = {
 			*/
 			
 			//create button for the answer	
-			button = new ClassButton(game, game.world.centerX, standardTextHeight + (75 * i), 'button',
+			button = new ClassButton(game, game.world.centerX - 230, standardTextHeight + (60 * i), 'button',
 				this, results[i]);
 			game.add.existing(button);
 			
 			//put the answer text over the button
-			var classText = game.add.text(game.world.centerX, standardTextHeight + (75 * i) + 3, 
+			var classText = game.add.text(game.world.centerX - 245, standardTextHeight + (60 * i) + 3, 
 				results[i], textStyle);
-			answerText.anchor.x = 0.5;
-			answerText.anchor.y = 0.5;
+			classText.anchor.x = 1;
+			classText.anchor.y = 0.5;
 
 			//scale the button to the size of the text
-			button.scale.setTo((answerText.width/BUTTON_WIDTH) + 0.15, 
-				(answerText.height/BUTTON_HEIGHT) + 0.3);
-		}
-		
-		/*
-		function onUp(button, pointer, isOver)
-		{
-			for (var key in PROPERTIES.CLASS_BUCKETS)
-			{
-				PROPERTIES.CLASS_BUCKETS[key] = 0;
-			}
-			
-			if (isOver)
-			{
-				PROPERTIES.QUESTION = 1;
-				game.state.start('Race');
-			}
-		}
-		
-		button = game.add.button(game.world.centerX, game.world.centerY + 150, 'button', onUp, this, 2, 1, 0);
-		button.anchor.x = 0.5;
-		button.anchor.y = 0.5;
-		button.alpha = .5;
+			button.scale.setTo((classText.width/BUTTON_WIDTH) + 0.15, 
+				(classText.height/BUTTON_HEIGHT) + 0.3);
+			button.anchor.x = 1;
+			button.anchor.y = 0.5;
 
-		buttonText = game.add.text(game.world.centerX, game.world.centerY + 153, 'Choose race!', textStyle);
-		buttonText.anchor.x = 0.5;
-		buttonText.anchor.y = 0.5;
-		
-		button.scale.setTo((buttonText.width/BUTTON_WIDTH) + 0.15, (buttonText.height/BUTTON_HEIGHT) + 0.3);
-		*/
+			var extraText = game.add.text(game.world.centerX - 195, standardTextHeight + (60 * i) + 3, 
+				CLASS_DESCRIPTIONS[results[i]], smallTextStyle);
+			extraText.anchor.x = 0;
+			extraText.anchor.y = 0.5;
+		}
 	},
 	
 	update: function() 

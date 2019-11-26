@@ -20,6 +20,7 @@ window.onload = function() {
 	game.state.add('Question', Question);
 	game.state.add('Results', Results);
 	game.state.add('Race', Race);
+	game.state.add('End', End);
 
 	game.state.start('Intro');
 };
@@ -29,6 +30,8 @@ window.onload = function() {
 var titleTextStyle = { font: 'PT Serif', fontStyle: 'bold',  fontSize: '43px',
 	fill: '#FFFFFF', align: "center", wordWrap: true, wordWrapWidth: 800 };
 var textStyle = { font: 'Overlock', fontSize: '28px', fill: '#FFFFFF', align: "center" };
+var smallTextStyle = { font: 'Overlock', fontSize: '20px', fontStyle: 'italic', fill: '#FFFFFF', align: "center" };
+var shortTextStyle = { font: 'Overlock', fontSize: '16px', fontStyle: 'italic', fill: '#FFFFFF', align: "center", wordWrap: true, wordWrapWidth: 190 };
 
 //use this to keep header heights consistent
 var standardTitleHeight = 170;
@@ -58,6 +61,8 @@ var PROPERTIES =
 	QUESTION: 0,
 	
 	CLASS: null,
+	
+	RACE: null,
 };
 
 var CLASS_DESCRIPTIONS =
@@ -81,10 +86,10 @@ var RACE_DESCRIPTIONS =
 	Dwarf: "A short, stout and stubborn race who traditionally live underground.",
 	Elf: "A graceful, ancient race with great interest in adventure.",
 	Dragonborn: "Half-dragon humanoids with unique origins and skills.",
-	Halfling: "A race of smallish people who possess great stealth and social skills",
+	Halfling: "A race of smallish people who possess great stealth and social skills.",
 	Human: "The most average race. Humans have a bit of skill in many areas.",
 	Gnome: "A very enthusiastic and curious race who enjoy a good prank.",
-	Half_orc: "A tall and strong race descending from orcs. Often prejudiced.",
+	['Half-orc']: "A tall and strong race descending from orcs. Often prejudiced.",
 	Tiefling: "A race of demonic humanoids who are widely prejudiced wherever they go.",
 }
 
@@ -243,7 +248,7 @@ var RACE_SUGGESTIONS =
 	Barbarian:
 	{
 		TIP: "Barbarians require high strength and constitution.",
-		[0]: { TEXT: "These races provide high strength:", RACES: ["Half_orc", "Dragonborn"] },
+		[0]: { TEXT: "These races provide high strength:", RACES: ["Half-orc", "Dragonborn"] },
 		[1]: { TEXT: "These races provide high constitution:", RACES: ["Dwarf", "Gnome"] },
 		[2]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
 	},
@@ -251,7 +256,7 @@ var RACE_SUGGESTIONS =
 	Bard:
 	{
 		TIP: "Bards require high charima.",
-		[0]: { TEXT: "These races provide high charisma:", RACES: ["Half_elf", "Halfling", "Dragonborn", "Tiefling"] },
+		[0]: { TEXT: "These races provide high charisma:", RACES: ["Halfling", "Dragonborn", "Tiefling"] },
 		[1]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
 	},
 	
@@ -272,7 +277,7 @@ var RACE_SUGGESTIONS =
 	Fighter:
 	{
 		TIP: "Fighters require high strength or dexterity.",
-		[0]: { TEXT: "These races provide high strength:", RACES: ["Half_orc", "Dragonborn"] },
+		[0]: { TEXT: "These races provide high strength:", RACES: ["Half-orc", "Dragonborn"] },
 		[1]: { TEXT: "These races provide high dexterity:", RACES: ["Elf", "Halfling"] },
 		[2]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
 	},
@@ -288,8 +293,8 @@ var RACE_SUGGESTIONS =
 	Paladin:
 	{
 		TIP: "Paladins require high strength or charisma.",
-		[0]: { TEXT: "These races provide high strength:", RACES: ["Half_orc"] },
-		[1]: { TEXT: "These races provide high charisma:", RACES: ["Half_elf", "Halfling", "Tiefling"] },
+		[0]: { TEXT: "These races provide high strength:", RACES: ["Half-orc"] },
+		[1]: { TEXT: "These races provide high charisma:", RACES: ["Halfling", "Tiefling"] },
 		[2]: { TEXT: "These races have multiple skills:", RACES: ["Human", "Dragonborn"] },
 	},
 	
@@ -311,14 +316,14 @@ var RACE_SUGGESTIONS =
 	Sorcerer:
 	{
 		TIP: "Sorcerers require high charisma.",
-		[0]: { TEXT: "These races provide high charisma:", RACES: ["Half_elf", "Halfling", "Tiefling", "Dragonborn"] },
+		[0]: { TEXT: "These races provide high charisma:", RACES: ["Halfling", "Tiefling", "Dragonborn"] },
 		[1]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
 	},
 	
 	Warlock:
 	{
 		TIP: "Warlocks require high charisma.",
-		[0]: { TEXT: "These races provide high charisma:", RACES: ["Half_elf", "Halfling", "Tiefling", "Dragonborn"] },
+		[0]: { TEXT: "These races provide high charisma:", RACES: ["Halfling", "Tiefling", "Dragonborn"] },
 		[1]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
 	},
 	

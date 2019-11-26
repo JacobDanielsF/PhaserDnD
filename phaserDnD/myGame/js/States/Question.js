@@ -3,6 +3,8 @@ Question.prototype = {
 
 	create: function()
 	{
+		//console.log(PROPERTIES.CLASS_BUCKETS);
+		
 		//Add question text
 		QVal = "Q" + PROPERTIES.QUESTION;
 		

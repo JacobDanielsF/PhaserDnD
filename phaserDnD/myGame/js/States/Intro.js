@@ -26,6 +26,7 @@ Intro.prototype = {
 		
 		PROPERTIES.QUESTION = 0;
 		PROPERTIES.CLASS = null;
+		PROPERTIES.RACE = null;
 		
 		//event timer to make sure all google texts are loaded before generating text
 		game.time.events.add(Phaser.Timer.SECOND, this.makeText, this);
@@ -74,7 +75,7 @@ Intro.prototype = {
 		button.anchor.y = 0.5;
 		button.alpha = .5;
 
-		var text = game.add.text(game.world.centerX, standardTitleHeight + (100 * 4) + 4, "start quiz!", titleTextStyle);
+		var text = game.add.text(game.world.centerX, standardTitleHeight + (100 * 4) + 4, "Start quiz!", titleTextStyle);
 		text.anchor.x = 0.5;
 		text.anchor.y = 0.5;
 		
