@@ -97,147 +97,182 @@ var CLASS_QUESTIONS =
 {
 	Q1:
 	{
-		Q: "You’re ambushed by an enemy! What do you have on you?",
+		Q: "Your character is setting out on a dangerous quest! What arms do they have on them?",
 		A:
 		{
-			[0]: { TEXT: "A heavy greatsword!", REWARD: ["Barbarian", "Paladin", "Fighter", "Cleric"] },
-			[1]: { TEXT: "A short sword hidden in your boot!", REWARD: ["Rogue", "Bard", "Ranger"] },
+			[0]: { TEXT: "A heavy greatsword slung across their back!", REWARD: ["Barbarian", "Paladin", "Fighter", "Cleric"] },
+			[1]: { TEXT: "A short sword hidden in their boot!", REWARD: ["Rogue", "Bard", "Ranger"] },
 			[2]: { TEXT: "Weapon? What weapon? You just need the spells in your head!", REWARD: ["Sorcerer", "Warlock", "Wizard"] },
-			[3]: { TEXT: "The two fists nature gave me!", REWARD: ["Monk"] }
+			[3]: { TEXT: "The two fists nature gave them!", REWARD: ["Monk"] }
 		}
 	},
 	
 	Q2:
 	{
-		Q: "You're on a long journey. After the bare essentials, what extra things will you pack?",
+		Q: "Your character is going on a long journey. After the bare essentials, what extra things will you pack?",
 		A:
 		{
-			[0]: { TEXT: "An extra book to read.", REWARD: ["Wizard"] },
-			[1]: { TEXT: "An instrument to provide entertainment.", REWARD: ["Bard"] },
-			[2]: { TEXT: "Workout gear to keep up those gains.", REWARD: ["Barbarian", "Fighter"] },
-			[3]: { TEXT: "Extra food that you like.", REWARD: ["Ranger", "Druid", "Monk"] },
-			[4]: { TEXT: "A tome for the being you worship.", REWARD: ["Warlock", "Paladin", "Cleric"] }
+			[0]: { TEXT: "Nothing! Their confidence gets them through everything!", REWARD: ["Sorcerer"] },
+			[1]: { TEXT: "Workout gear to keep up those gains.", REWARD: ["Barbarian", "Fighter"] },
+			[2]: { TEXT: "Extra food to stay prepared.", REWARD: ["Ranger", "Druid", "Monk"] },
+			[3]: { TEXT: "A religious tome to slap dissenters with.", REWARD: ["Warlock", "Paladin", "Cleric"] }
 		}
 	},
 	
 	Q3:
 	{
-		Q: "You are approached by an enemy! What do you do?",
+		Q: "An angry ogre waving a large club approaches your character! What will your character do?",
 		A:
 		{
 			[0]: { TEXT: "Try to get the help of a higher power.", REWARD: ["Paladin", "Cleric", "Warlock"] },
-			[1]: { TEXT: "Try to get on their good side before anything happens.", REWARD: ["Bard", "Sorcerer"] },
-			[2]: { TEXT: "KILL!!", REWARD: ["Barbarian", "Fighter", "Rogue", "Monk"] },
+			[1]: { TEXT: "Whisper a spell that quells the ogre's anger.", REWARD: ["Bard", "Wizard", "Sorcerer"] },
+			[2]: { TEXT: "Slip away before the ogre even realizes it.", REWARD: ["Rogue", "Druid", "Ranger"] },
+			[3]: { TEXT: "Try to look intimidating so the ogre backs off.", REWARD: ["Paladin", "Fighter"] },
+			[3]: { TEXT: "Prepare for a brutal fight.", REWARD: ["Barbarian", "Monk"] },
 		}
 	},
 	
 	Q4:
 	{
-		Q: "You’re in a tomb and there’s a door with a puzzle on it. What do you do to get through it?",
+		Q: "Your character is in a dungeon and there’s a door with a puzzle on it. What do they do to get through it?",
 		A:
 		{
-			[0]: { TEXT: "Try to find a different way around it.", REWARD: ["Rogue", "Ranger", "Druid", "Sorcerer"] },
-			[1]: { TEXT: "Just first try to open it...", REWARD: ["Bard", "Monk"] },
-			[2]: { TEXT: "Just SMASH THROUGH IT.", REWARD: ["Barbarian", "Fighter"] },
-			[3]: { TEXT: "Solve the puzzle.", REWARD: ["Wizard", "Cleric"] },
+			[0]: { TEXT: "Try to find a sneaky way around it.", REWARD: ["Rogue", "Ranger", "Sorcerer"] },
+			[1]: { TEXT: "Try the handle first.", REWARD: ["Bard", "Monk", "Druid"] },
+			[2]: { TEXT: "Just SMASH THROUGH IT.", REWARD: ["Barbarian", "Fighter", "Warlock"] },
+			[3]: { TEXT: "Sit down and think through the puzzle.", REWARD: ["Wizard", "Cleric"] },
 		}
 	},
 	
 	Q5:
 	{
-		Q: "When you are in trouble, what do you fall back on?",
+		Q: "When your character is in trouble, what do you fall back on?",
 		A:
 		{
-			[0]: { TEXT: "The being I worship!", REWARD: ["Paladin", "Cleric", "Warlock"] },
-			[1]: { TEXT: "My friends! Help me!", REWARD: ["Bard", "Druid"] },
-			[2]: { TEXT: "Nothing! I'm confient in my ability.", REWARD: ["Barbarian", "Fighter", "Rogue", "Sorcerer"] },
-			[3]: { TEXT: "The clarity of my mind!", REWARD: ["Monk", "Ranger", "Wizard"] },
+			[0]: { TEXT: "The biggest hit they got.", REWARD: ["Warlock", "Barbarian"] },
+			[1]: { TEXT: "Their friends!", REWARD: ["Bard", "Druid", "Cleric"] },
+			[2]: { TEXT: "Their honed skill.", REWARD: ["Wizard", "Monk", "Fighter", "Paladin"] },
+			[3]: { TEXT: "Whatever they can come up with in the moment.", REWARD: ["Sorcerer", "Rogue", "Ranger"] },
 		}
 	},
 	
 	Q6:
 	{
-		Q: "How much patience do you have solving a rubix cube?",
+		Q: "How much patience does your character have solving a rubix cube?",
 		A:
 		{
-			[0]: { TEXT: "I sit there until it's done.", REWARD: ["Wizard", "Monk", "Ranger"] },
-			[1]: { TEXT: "I'll smash it to bits!", REWARD: ["Barbarian", "Sorcerer"] },
-			[2]: { TEXT: "I immediately give up.", REWARD: ["Druid", "Paladin"] },
-			[3]: { TEXT: "I'll try it out, see what happens.", REWARD: ["Bard", "Fighter"] },
-			[4]: { TEXT: "I'll get someone else to solve it for me.", REWARD: ["Rogue", "Warlock"] },
+			[0]: { TEXT: "They sit there until it's done.", REWARD: ["Wizard", "Monk", "Ranger"] },
+			[1]: { TEXT: "Smash it to bits!", REWARD: ["Barbarian", "Paladin"] },
+			[2]: { TEXT: "Try it for a little bit and see what happens.", REWARD: ["Bard", "Fighter", "Druid"] },
+			[3]: { TEXT: "Get someone else to solve it for them.", REWARD: ["Rogue", "Warlock", "Sorcerer"] },
 		}
 	},
 	
 	Q7:
 	{
-		Q: "There’s a test coming up. What do you do to prepare for it?",
+		Q: "There's a test coming up. What does your character do to prepare for it?",
 		A:
 		{
-			[0]: { TEXT: "Study studiously.", REWARD: ["Wizard", "Monk", "Cleric"] },
-			[1]: { TEXT: "I can get away with cheating.", REWARD: ["Warlock", "Rogue"] },
-			[2]: { TEXT: "I'll just wing it.", REWARD: ["Sorcerer"] },
+			[0]: { TEXT: "Hit them with books and study hard all day!", REWARD: ["Wizard", "Monk", "Cleric"] },
+			[1]: { TEXT: "Cheat.", REWARD: ["Warlock", "Rogue"] },
+			[2]: { TEXT: "Try to study a bit, but remember to live your life.", REWARD: ["Fighter", "Druid", "Monk"] },
+			[3]: { TEXT: "Just wing it.", REWARD: ["Sorcerer", "Barbarian"] },
 		}
 	},
 	
 	Q8:
 	{
-		Q: "You are in the treasury of a dragon. You have time to pick up one object before it wakes up. What do you look for?",
+		Q: "Your character is in the treasury of a dragon. They have time to pick up one object before it wakes up. What do they look for?",
 		A:
 		{
-			[0]: { TEXT: "Go for the gold!", REWARD: ["Rogue"] },
+			[0]: { TEXT: "Go for the gold!", REWARD: ["Rogue", "Warlock"] },
 			[1]: { TEXT: "Play it safe and leave.", REWARD: ["Monk", "Ranger", "Druid"] },
-			[2]: { TEXT: "Find some rare books.", REWARD: ["Bard", "Wizard"] },
+			[2]: { TEXT: "Find some rare books.", REWARD: ["Bard", "Wizard", "Cleric"] },
 			[3]: { TEXT: "An elegant sword or shield.", REWARD: ["Fighter", "Barbarian", "Paladin"] },
 		}
 	},
 	
 	Q9:
 	{
-		Q: "If you pick up a sword, why do you do it?",
+		Q: "Why does your character pick up arms?",
 		A:
 		{
-			[0]: { TEXT: "For the skill!", REWARD: ["Fighter", "Wizard"] },
-			[1]: { TEXT: "To defend others!", REWARD: ["Paladin", "Cleric"] },
+			[0]: { TEXT: "To become more skilled!", REWARD: ["Fighter", "Wizard", "Monk"] },
+			[1]: { TEXT: "To follow their beliefs!", REWARD: ["Paladin", "Cleric", "Druid", "Bard"] },
 			[2]: { TEXT: "To fight!", REWARD: ["Barbarian"] },
-			[3]: { TEXT: "For my own gain...", REWARD: ["Rogue", "Sorcerer", "Warlock"] },
+			[3]: { TEXT: "They like things that look cool!", REWARD: ["Rogue", "Sorcerer", "Warlock"] },
 		}
 	},
 	
 	Q10:
 	{
-		Q: "Where do you feel most at home?",
+		Q: "Where does your character feel most at home?",
 		A:
 		{
 			[0]: { TEXT: "A battlefield.", REWARD: ["Barbarian", "Fighter"] },
 			[1]: { TEXT: "In the forest.", REWARD: ["Druid", "Ranger"] },
 			[2]: { TEXT: "In a library.", REWARD: ["Wizard", "Sorcerer"] },
-			[3]: { TEXT: "The temple of my god.", REWARD: ["Cleric", "Monk", "Paladin"] },
-			[4]: { TEXT: "A busy town square.", REWARD: ["Bard"] },
+			[3]: { TEXT: "A temple.", REWARD: ["Cleric", "Monk", "Paladin"] },
+			[4]: { TEXT: "A busy town square.", REWARD: ["Bard", "Rogue", "Warlock"] },
 		}
 	},
 	
 	Q11:
 	{
-		Q: "What kind of company do you keep?",
+		Q: "What kind of company does your character keep?",
 		A:
 		{
-			[0]: { TEXT: "I hang out with shady people.", REWARD: ["Rogue", "Warlock"] },
-			[1]: { TEXT: "I'm friends with everyone!", REWARD: ["Bard", "Fighter"] },
-			[2]: { TEXT: "The animals in the forest.", REWARD: ["Druid", "Ranger"] },
-			[3]: { TEXT: "Fellow followers of my faith.", REWARD: ["Cleric", "Monk", "Paladin"] },
+			[0]: { TEXT: "The kind not mentioned in polite company.", REWARD: ["Rogue", "Warlock"] },
+			[1]: { TEXT: "They're pretty good friends with everyone.", REWARD: ["Bard", "Fighter", "Sorcerer"] },
+			[2]: { TEXT: "They're solitary and don't really 'keep company.'", REWARD: ["Druid", "Ranger"] },
+			[3]: { TEXT: "People who share their values.", REWARD: ["Cleric", "Monk", "Paladin"] },
 		}
 	},
 	
 	Q12:
 	{
-		Q: "What do you prefer to do in a battle?",
+		Q: "What does your character prefer to do in a battle?",
 		A:
 		{
-			[0]: { TEXT: "Assist my friend when they need it.", REWARD: ["Bard", "Druid"] },
-			[1]: { TEXT: "Heal those in need.", REWARD: ["Cleric"] },
-			[2]: { TEXT: "Be on the front lines.", REWARD: ["Barbarian", "Fighter", "Paladin"] },
-			[3]: { TEXT: "I like to see explosions.", REWARD: ["Wizard", "Sorcerer", "Warlock"] },
-			[4]: { TEXT: "Look for the perfect opening to strike.", REWARD: ["Rogue", "Ranger"] },
+			[0]: { TEXT: "Fight hard on the front lines.", REWARD: ["Barbarian", "Fighter", "Paladin"] },
+			[1]: { TEXT: "Use magic to enhance the abilities of their party.", REWARD: ["Bard", "Cleric", "Druid"] },
+			[2]: { TEXT: "Make explosions!", REWARD: ["Wizard", "Sorcerer", "Warlock"] },
+			[3]: { TEXT: "Look for the perfect opening to strike.", REWARD: ["Rogue", "Ranger"] },
+		}
+	},
+	
+	Q13:
+	{
+		Q: "Your character's ally has fallen in battle! What do they do?",
+		A:
+		{
+			[0]: { TEXT: "Rush to their aid, of course!", REWARD: ["Cleric", "Bard"] },
+			[1]: { TEXT: "Throw themselves into the fray of enemies to avenge them!", REWARD: ["Barbarian", "Ranger"] },
+			[2]: { TEXT: "Stand by their friend's side with weapons raised to defend them!", REWARD: ["Paladin", "Fighter"] },
+			[3]: { TEXT: "Use magic to make it difficult for the enemy to reach their ally.", REWARD: ["Wizard", "Druid", "Sorcerer"] },
+		}
+	},
+	
+	Q14:
+	{
+		Q: "Your character is exploring an ancient tomb. The air is heavy with the magic of the undead. What do they do?",
+		A:
+		{
+			[0]: { TEXT: "Seek out the aberrations and destroy them.", REWARD: ["Paladin", "Druid", "Cleric"] },
+			[1]: { TEXT: "Discover as much as possible about the history of the tomb.", REWARD: ["Bard", "Wizard"] },
+			[2]: { TEXT: "Look for treasure hidden in the ruins.", REWARD: ["Rogue", "Sorcerer"] },
+			[3]: { TEXT: "Warn your party about the undead.", REWARD: ["Ranger", "Monk"] },
+		}
+	},
+	
+	Q15:
+	{
+		Q: "As a player, what sounds most interesting for you to do in combat?",
+		A:
+		{
+			[0]: { TEXT: "Having many options avaliable to you.", REWARD: ["Fighter", "Wizard", "Druid", "Monk", "Bard", "Sorcerer"] },
+			[1]: { TEXT: "Having impactful or powerful attacks.", REWARD: ["Paladin", "Warlock", "Barbarian"] },
+			[2]: { TEXT: "Look for treasure hidden in the ruins.", REWARD: ["Rogue", "Druid", "Ranger"] },
 		}
 	},
 };

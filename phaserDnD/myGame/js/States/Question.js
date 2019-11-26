@@ -11,7 +11,7 @@ Question.prototype = {
 		QData = CLASS_QUESTIONS[QVal];
 		Q = QData.Q;
 		
-		QText = game.add.text(game.world.centerX, standardTitleHeight, Q, titleTextStyle);
+		QText = game.add.text(game.world.centerX, standardTitleHeight - 25, Q, titleTextStyle);
 		QText.anchor.x = 0.5;
 		QText.anchor.y = 0.5;
 
