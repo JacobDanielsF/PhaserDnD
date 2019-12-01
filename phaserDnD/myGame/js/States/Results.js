@@ -7,9 +7,13 @@ Results.prototype = {
 	
 	create: function() 
 	{
-		RText = game.add.text(game.world.centerX, standardTitleHeight, "Your results:", titleTextStyle);
+		RText = game.add.text(game.world.centerX, standardTitleHeight - 20, "Your class results", titleTextStyle);
 		RText.anchor.x = 0.5;
 		RText.anchor.y = 0.5;
+		
+		SText = game.add.text(game.world.centerX, standardTitleHeight + 50, "Please select a class.", textStyle);
+		SText.anchor.x = 0.5;
+		SText.anchor.y = 0.5;
 		
 		var temp = ["Fighter", "Barbarian", "Paladin", "Cleric", "Rogue", "Bard", "Ranger", "Sorcerer", "Warlock", "Wizard", "Monk", "Druid"],
 		temp = Shuffle(temp);
