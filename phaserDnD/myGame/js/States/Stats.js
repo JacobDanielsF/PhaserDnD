@@ -57,7 +57,7 @@ Stats.prototype = {
 			}
 		}
 		
-		// console.log(guide);
+		//console.log(guide);
 		
 		var newStats = [0, 0, 0, 0, 0, 0];
 		
@@ -68,7 +68,7 @@ Stats.prototype = {
 			newStats[guide[i]] = baseStats[i] + bonus[i];
 		}
 		
-		console.log(newStats);
+		//console.log(newStats);
 		
 		var height = 60;
 		var text = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
@@ -100,11 +100,11 @@ Stats.prototype = {
 			statText.anchor.y = 0.5;
 		}
 		
-		classText = game.add.text(game.world.centerX - 100, 550, "Class: " + PROPERTIES.CLASS, textStyle);
+		classText = game.add.text(game.world.centerX - 120, 550, "Class: " + PROPERTIES.CLASS, textStyle);
 		classText.anchor.x = 0.5;
 		classText.anchor.y = 0.5;
 		
-		raceText = game.add.text(game.world.centerX + 100, 550, "Race: " + PROPERTIES.RACE, textStyle);
+		raceText = game.add.text(game.world.centerX + 120, 550, "Race: " + PROPERTIES.RACE, textStyle);
 		raceText.anchor.x = 0.5;
 		raceText.anchor.y = 0.5;
 		
