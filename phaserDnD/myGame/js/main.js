@@ -21,6 +21,7 @@ window.onload = function() {
 	game.state.add('Results', Results);
 	game.state.add('Race', Race);
 	game.state.add('End', End);
+	game.state.add('Stats', Stats);
 
 	game.state.start('Intro');
 };
@@ -369,3 +370,48 @@ var RACE_SUGGESTIONS =
 		[1]: { TEXT: "These races have multiple skills:", RACES: ["Human"] },
 	},
 };
+
+var STAT_GUIDE =
+{
+	//[STR, DEX, CON, INT, WIS, CHA]
+	//[0    1    2    3    4    5  ]
+	//nth stat gets nth highest number
+	
+	Wizard: [4, 2, [0, 1, 3, 5], [0, 1, 3, 5], [0, 1, 3, 5], [0, 1, 3, 5]],
+	
+	Druid: [4, 1, 2, 5, 3, 0],
+	
+	Warlock: [5, 2, 1, 4, 0, 3],
+	
+	Sorcerer: [5, 1, 2, 4, 3, 0],
+	
+	Fighter: [[0, 1], 2, [0, 1], 5, 4, 3],
+	
+	Barbarian: [2, 0, 1, 5, 4, 3],
+	
+	Rogue: [1, 5, 0, 2, 4, 3],
+	
+	Monk: [1, 4, [2, 5], [2, 5], 3, 0],
+	
+	Bard: [5, 1, 2, 4, 0, 3],
+	
+	Ranger: [1, 4, 2, 5, 3, 0],
+	
+	Cleric: [4, [0, 1], 2, 5, [0, 1], 3],
+	
+	Paladin: [0, 2, 5, 1, 4, 3],
+}
+
+var ABILITY_SCORE =
+{
+	//[STR, DEX, CON, INT, WIS, CHA]
+	
+	Dwarf: [0, 0, 2, 0, 1, 0],
+	Elf: [0, 2, 0, 1, 0, 0],
+	Dragonborn: [2, 0, 0, 0, 0, 1],
+	Halfling: [0, 2, 0, 0, 0, 1],
+	Human: [1, 1, 1, 1, 1, 1],
+	Gnome: [0, 0, 1, 2, 0, 0],
+	['Half-orc']: [2, 0, 1, 0, 0, 0],
+	Tiefling: [0, 0, 0, 1, 0, 2],
+}

@@ -27,5 +27,5 @@ function onUpRace(button, pointer, isOver)
 //funct to move to results
 function showEnd()
 {
-	game.state.start('End');
+	game.state.start('Stats');
 }
