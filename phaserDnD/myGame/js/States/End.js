@@ -26,7 +26,12 @@ End.prototype = {
 			PROPERTIES.QUESTION = 1;
 			PROPERTIES.CLASS = null;
 			PROPERTIES.RACE = null;
-			
+
+			for (var key in PROPERTIES.STATS)
+			{
+				PROPERTIES.STATS[key] = 0;
+			}
+
 			game.state.start('Question');
 		}
 	},

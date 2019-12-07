@@ -15,10 +15,13 @@ Stats.prototype = {
 
 	create: function() 
 	{
+		//add input plugin
+		game.add.plugin(PhaserInput.Plugin);
+
 		var baseStats = [15, 14, 13, 12, 10, 8];
 		
 		var baseGuide = STAT_GUIDE[PROPERTIES.CLASS];
-		
+
 		var guide = [];
 		
 		for (let i = 0; i < baseGuide.length; i++)
@@ -62,7 +65,7 @@ Stats.prototype = {
 		var newStats = [0, 0, 0, 0, 0, 0];
 		
 		var bonus = ABILITY_SCORE[PROPERTIES.RACE];
-		
+
 		for (let i = 0; i < guide.length; i++)
 		{
 			newStats[guide[i]] = baseStats[i] + bonus[i];
@@ -85,19 +88,11 @@ Stats.prototype = {
 			labelText.anchor.x = 1;
 			labelText.anchor.y = 0.5;
 			
-			var miniStat = Math.floor((newStats[i] - 10) / 2);
-			
-			var sign = "+";
-			
-			if (miniStat < 0)
-			{
-				sign = "";
-			}
-			
-			var statText = game.add.text(game.world.centerX + 20, 320 - (height * 2.5) + (i * height), 
-				newStats[i] + " (" + sign + miniStat + ")", textStyle);
-			statText.anchor.x = 0;
-			statText.anchor.y = 0.5;
+			//add in textbox and (+#) text
+			var adjustForInputHeight = 25;
+			var stat = new StatTextBox(game, game.world.centerX, 320 - (height * 2.5) + (i * height) - adjustForInputHeight,
+			 newStats[i], text[i]);
+			game.add.existing(stat);
 		}
 		
 		classText = game.add.text(game.world.centerX - 120, 550, "Class: " + PROPERTIES.CLASS, textStyle);
@@ -123,6 +118,6 @@ Stats.prototype = {
 	
 	update: function() 
 	{
-		
+
 	}
 }
