@@ -1,10 +1,9 @@
 //prefab for all answers to quiz questions
 //creates the text object and the button to click on that answer
 function QuestionMark(x, y, key, text, game) {
-	Phaser.Sprite.call(this, game, x, y, key, 0);
+	Phaser.Sprite.call(this, game, x, y, key);
 
     this.inputEnabled = true;
-
     this.text = game.add.group();
 
     //add textbox image
@@ -39,12 +38,10 @@ QuestionMark.prototype.update = function() {
     if (this.input.pointerOver())
     {
         this.text.alpha = 1;
-        this.frame = 1;
     }
     else
     {
     	this.text.alpha = 0;
-    	this.frame = 0;
     }
 
 }

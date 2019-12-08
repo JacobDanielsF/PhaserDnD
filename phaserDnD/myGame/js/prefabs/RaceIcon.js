@@ -2,9 +2,9 @@
 //when clicked, icon will store what race was kept and will send player to next screen
 //icons increase in size slightly when hovered over
 
-function RaceIcon(x, y, key, race, game)
+function RaceIcon(x, y, atlas, race, game)
 {
-	Phaser.Image.call(this, game, x, y, key);
+	Phaser.Image.call(this, game, x, y, atlas, race);
     this.anchor.x = 0.5; //for positioning
 
     //enable click
@@ -38,6 +38,6 @@ RaceIcon.prototype.update = function()
 }
 
 function clickRace(raceIcon) {
-
-    console.log(raceIcon.race);
+    PROPERTIES.RACE = this.race;
+    game.state.start('Stats');
 }

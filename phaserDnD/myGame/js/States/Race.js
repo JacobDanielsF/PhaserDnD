@@ -4,9 +4,10 @@ Race.prototype = {
 	preload: function() 
 	{
 		game.load.image('tempElf', 'assets/img/temp_elf.png');
-		game.load.spritesheet('questionMark', 'assets/img/temp_question_mark.png', 48, 45);
+		game.load.spritesheet('questionMark', 'assets/img/temp_question_mark.png', 48, 45,2);
 		game.load.image('questionMark', 'assets/img/temp_question_mark.png');
 		game.load.image('textBox', 'assets/img/textbox.png');
+		game.load.atlas('races', 'assets/img/races.png', 'assets/img/races.json');
 	},
 
 	create: function()
@@ -16,89 +17,80 @@ Race.prototype = {
 		QText.anchor.x = 0.5;
 		QText.anchor.y = 0.5;
 		
-		suggestions = RACE_SUGGESTIONS[PROPERTIES.CLASS]
-		
-		tipText = game.add.text(game.world.centerX, 145, suggestions.TIP, textStyle);
+		suggestions = RACE_SUGGESTIONS[PROPERTIES.CLASS];
+
+		//add "Class needs ___ stat" text
+		tipText = game.add.text(game.world.centerX, 130, suggestions.TIP, textStyle);
 		tipText.anchor.x = 0.5;
 		tipText.anchor.y = 0.5;
+		tipText.fontStyle = "italic";
 		
-		//print(suggestions.length)
 		
-		var spacing = 0
-		
+		suggestionsLength = Object.keys(suggestions).length - 1; 
+		//how far apart each icon group should be
+		horizontalSpacing = game.world.width/(suggestionsLength* 2); 
+		//actual x position of each icon group
+		var xPosition = horizontalSpacing;
 		for (var i = 0; i < Object.keys(suggestions).length - 1; i++)
 		{
+			
+			if (i > 0) 
+				xPosition += horizontalSpacing*2; 
+
+			//adjust this to move entire icon/text block up or down
+			verticalSpacing = 210; 
+
 			var statClasses = suggestions[i];
 			
-			var raceStatText = game.add.text(game.world.centerX, 220 + (spacing * 50), statClasses.TEXT, textStyle);
+			//add "these classes provide ____ stat!" text
+			var raceStatText = game.add.text(xPosition, verticalSpacing, statClasses.TEXT, textStyle);
 		    raceStatText.anchor.x = 0.5;
 		    raceStatText.anchor.y = 0.5;
-			
+			raceStatText.wordWrap = true;
+			raceStatText.wordWrapWidth = horizontalSpacing*2;		
+
 			var races = statClasses.RACES;
 			
-			var mid = (races.length-1)/2;
-			var scale = 200;
-			
-			spacing++;
-			
+			//add race icons in
+			raceIcons = game.add.group();
 			for (var j = 0; j < races.length; j++)
 			{
-				var race = races[j];
-				
-				//if (race == 'Half_elf') race = 'Half-elf';
-				//if (race == 'Half_orc') race = 'Half-orc';
-				
-				var raceText = game.add.text(game.world.centerX - 265, 220 + (spacing * 50), race, textStyle);
-				raceText.anchor.x = 1;
-				raceText.anchor.y = 0.5;
-				
-				var descText = game.add.text(game.world.centerX - 230, 220 + (spacing * 50), RACE_DESCRIPTIONS[races[j]], smallTextStyle);
-				descText.anchor.x = 0;
-				descText.anchor.y = 0.5;
-				
-				//create button for the answer
-				button = new RaceButton(game, game.world.centerX - 250, 220 + (spacing * 50), 'button',
-					this, races[j]);
-				game.add.existing(button);
-				
-				//scale the button to the size of the text
-				button.scale.setTo((raceText.width/BUTTON_WIDTH) + 0.15, 
-					(raceText.height/BUTTON_HEIGHT) + 0.3);
-				button.anchor.x = 1;
-				button.anchor.y = 0.5;
-				
-				spacing++;
+				race = races[j];
+				var icon = new RaceIcon(xPosition, verticalSpacing + 50, 'races', race, game);
+				game.add.existing(icon);
+				icon.anchor.x = .5;
+				icon.anchor.y = .5; 
+
+				raceIcons.add(icon);
+
 			}
+
+			//Hi @Jake I really, really don't understand how groups work, so here is this steaming pile of garbo
+			if (suggestionsLength < 3) {
+				horizontalIconSpacing = 200;
+				verticalToolTipSpacing = 285;
+			}
+			else {
+				horizontalIconSpacing = 150;
+				verticalToolTipSpacing = 303;
+			} 
+
+			//align row/col of each icon and position the icons
+			iconsPerRow = 2;
+			if (raceIcons.length >= 2 && suggestionsLength >= 3)
+				iconsPerRow = 1; 
+			raceIcons.align(iconsPerRow, -1, horizontalIconSpacing, 225);
+			raceIcons.centerX  = xPosition; 
+			raceIcons.centerY = verticalSpacing + raceIcons.height/2 + raceStatText.height / 2;
 			
-			spacing += 0.5;
+			//add tooltip
+			//must be added AFTER align because otherwise the tooltip's text appears in wrong position
+			raceIcons.children.forEach(function(icon) {
+			    var qMark = new QuestionMark(icon.worldPosition.x-70, icon.worldPosition.y+verticalToolTipSpacing,'questionMark', 
+				RACE_DESCRIPTIONS[icon.race], game);
+				game.add.existing(qMark);
+			}, this);
+			//when an icon is clicked, send to next scene and save race
 		}
-		
-		/*
-		//add second row of races
-		for (let j = game.width - game.width/10.5; j > 0; j -= game.width/5) {
-			var race = new RaceIcon(j, 400, 'tempElf', 'elf', game);
-			game.add.existing(race);
-		}
-
-		//add first row of races
-		for (let j = game.width - game.width/5; j > 0; j -= game.width/5) {
-			var race = new RaceIcon(j, 150, 'tempElf', 'elf', game);
-			game.add.existing(race);
-		}
-
-		//add question marks for additional info
-		//question marks added seperately bc otherwise get overlap issues w text
-		for (let j = game.width - game.width/9; j > 0; j -= game.width/5) {
-			var qMark = new QuestionMark(j - race.width/2, 350 + race.height,'questionMark', 
-				'Elves are super neat! They have pointy ears\nand live a long time.', game);
-			game.add.existing(qMark);
-		}
-
-		for (let j = game.width - game.width/5; j > 0; j -= game.width/5) {
-			var qMark = new QuestionMark(j - race.width/2, 100 + race.height,'questionMark', 
-				'Elves are super neat! They have pointy ears\nand live a long time.', game);
-			game.add.existing(qMark);
-		}
-		*/
 	},
 }

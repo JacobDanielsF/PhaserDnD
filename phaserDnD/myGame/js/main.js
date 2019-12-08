@@ -169,7 +169,7 @@ var CLASS_QUESTIONS =
 	
 	Q6:
 	{
-		Q: "How much patience does your character have solving a rubix cube?",
+		Q: "How much patience does your character have solving a rubics cube?",
 		A:
 		{
 			[0]: { TEXT: "They sit there until it's done.", REWARD: ["Wizard", "Monk", "Ranger"] },
