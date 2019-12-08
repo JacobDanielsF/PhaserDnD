@@ -48,7 +48,7 @@ Race.prototype = {
 		    raceStatText.anchor.x = 0.5;
 		    raceStatText.anchor.y = 0.5;
 			raceStatText.wordWrap = true;
-			raceStatText.wordWrapWidth = horizontalSpacing*2;		
+			raceStatText.wordWrapWidth = horizontalSpacing*1.8;		
 
 			var races = statClasses.RACES;
 			
