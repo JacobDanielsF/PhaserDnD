@@ -283,7 +283,7 @@ var CLASS_QUESTIONS =
 		{
 			[0]: { TEXT: "Having many options avaliable to you.", REWARD: ["Fighter", "Wizard", "Druid", "Monk", "Bard", "Sorcerer"] },
 			[1]: { TEXT: "Having impactful or powerful attacks.", REWARD: ["Paladin", "Warlock", "Barbarian"] },
-			[2]: { TEXT: "Look for treasure hidden in the ruins.", REWARD: ["Rogue", "Druid", "Ranger"] },
+			[2]: { TEXT: "Fully utilizing the land you are fighting on to your advantage.", REWARD: ["Rogue", "Druid", "Ranger"] },
 		}
 	},
 };

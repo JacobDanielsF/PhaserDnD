@@ -50,32 +50,37 @@ Intro.prototype = {
 
 	makeText: function() {
 
-		var title = game.add.text(game.world.centerX, standardTitleHeight + 3, 
+		var title = game.add.text(game.world.centerX, standardTitleHeight - 20, 
 			"Welcome to DnD Helper!", titleTextStyle);
 		title.anchor.x = 0.5;
 		title.anchor.y = 0.5;
 
-		description = game.add.text(game.world.centerX, standardTitleHeight + (90 * 1) + 13, 
+		description = game.add.text(game.world.centerX, standardTitleHeight + (80 * 1), 
 		"This tool will help you create a level 1 character in D&D edition 5!", textStyle);
 		description.anchor.x = 0.5;
 		description.anchor.y = 0.5;
 
-		description = game.add.text(game.world.centerX, standardTitleHeight + (90 * 2) + 13, 
+		description = game.add.text(game.world.centerX, standardTitleHeight + (80 * 2), 
+		"It is intended for people who are new to D&D.", textStyle);
+		description.anchor.x = 0.5;
+		description.anchor.y = 0.5;
+
+		description = game.add.text(game.world.centerX, standardTitleHeight + (80 * 3), 
 		"You will be asked questions to help determine your class and race.", textStyle);
 		description.anchor.x = 0.5;
 		description.anchor.y = 0.5;
 
-		description = game.add.text(game.world.centerX, standardTitleHeight + (90 * 3) + 13, 
+		description = game.add.text(game.world.centerX, standardTitleHeight + (80 * 4), 
 		"Go ahead and...", textStyle);
 		description.anchor.x = 0.5;
 		description.anchor.y = 0.5;
 
-		var button = game.add.button(game.world.centerX, standardTitleHeight + (90 * 4) + 13, 'button', this.onUp, this, 2, 1, 0);
+		var button = game.add.button(game.world.centerX, standardTitleHeight + (80 * 5), 'button', this.onUp, this, 2, 1, 0);
 		button.anchor.x = 0.5;
 		button.anchor.y = 0.5;
 		button.alpha = .5;
 
-		var text = game.add.text(game.world.centerX, standardTitleHeight + (90 * 4) + 4 + 13, "Start quiz!", titleTextStyle);
+		var text = game.add.text(game.world.centerX, standardTitleHeight + (80 * 5) + 4, "Start quiz!", titleTextStyle);
 		text.anchor.x = 0.5;
 		text.anchor.y = 0.5;
 		

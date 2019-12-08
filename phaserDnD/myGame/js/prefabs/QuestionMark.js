@@ -1,3 +1,4 @@
+
 //prefab for all answers to quiz questions
 //creates the text object and the button to click on that answer
 function QuestionMark(x, y, key, text, game) {
@@ -5,6 +6,7 @@ function QuestionMark(x, y, key, text, game) {
 
     this.inputEnabled = true;
     this.text = game.add.group();
+    this.game = game; 
 
     //add textbox image
     var backRect = game.add.image(x + 35, y + 35, 'textBox');
@@ -18,7 +20,7 @@ function QuestionMark(x, y, key, text, game) {
     //adjust textbox size to text
 	backRect.width = blurbText.width + 20;
 	backRect.height = blurbText.height + 15;
-	backRect.alpha = .6;
+	backRect.alpha = .95;
 
 	//group it!!
     this.text.add(blurbText);
@@ -29,6 +31,12 @@ function QuestionMark(x, y, key, text, game) {
     	blurbText.x = game.width - blurbText.width - 20;
     	backRect.x = game.width - backRect.width - 10;
     }
+    if (backRect.y + backRect.height > game.height) {
+        blurbText.y = game.height - blurbText.height - 20;
+        backRect.y = game.height - backRect.height - 10;
+    }
+
+    // questionMarkGroup.add(this);
 }
 
 QuestionMark.prototype = Object.create(Phaser.Sprite.prototype);

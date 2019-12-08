@@ -95,11 +95,17 @@ Stats.prototype = {
 			game.add.existing(stat);
 		}
 		
-		classText = game.add.text(game.world.centerX - 120, 550, "Class: " + PROPERTIES.CLASS, textStyle);
+		classText = game.add.text(game.world.centerX, 525, "Feel free to edit these stats! (Make sure to ask your Dungeon Master)!", textStyle);
+		classText.fontSize = "22px"; 
+		classText.fontStyle = "italic";
+		classText.anchor.x = 0.5;
+		classText.anchor.y = 0.5;
+
+		classText = game.add.text(game.world.centerX - 120, 575, "Class: " + PROPERTIES.CLASS, textStyle);
 		classText.anchor.x = 0.5;
 		classText.anchor.y = 0.5;
 		
-		raceText = game.add.text(game.world.centerX + 120, 550, "Race: " + PROPERTIES.RACE, textStyle);
+		raceText = game.add.text(game.world.centerX + 120, 575, "Race: " + PROPERTIES.RACE, textStyle);
 		raceText.anchor.x = 0.5;
 		raceText.anchor.y = 0.5;
 		

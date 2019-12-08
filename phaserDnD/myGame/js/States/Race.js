@@ -43,7 +43,8 @@ Race.prototype = {
 			var statClasses = suggestions[i];
 			
 			//add "these classes provide ____ stat!" text
-			var raceStatText = game.add.text(xPosition, verticalSpacing, statClasses.TEXT, textStyle);
+			//game.world.width - xPosition because otherwise the toolTips will overlap strangely (basicaly reverse everything)
+			var raceStatText = game.add.text(game.world.width - xPosition, verticalSpacing, statClasses.TEXT, textStyle);
 		    raceStatText.anchor.x = 0.5;
 		    raceStatText.anchor.y = 0.5;
 			raceStatText.wordWrap = true;
@@ -77,10 +78,11 @@ Race.prototype = {
 
 			//align row/col of each icon and position the icons
 			iconsPerRow = 2;
-			if (raceIcons.length >= 2 && suggestionsLength >= 3)
+			if (raceIcons.length == 2 && suggestionsLength == 3)
 				iconsPerRow = 1; 
-			raceIcons.align(iconsPerRow, -1, horizontalIconSpacing, 225);
-			raceIcons.centerX  = xPosition; 
+			raceIcons.align(iconsPerRow, -1, horizontalIconSpacing, 210);
+			//game.world.width - xPosition because otherwise the toolTips will overlap strangely (basically reverse everything)
+			raceIcons.centerX  = game.world.width - xPosition; 
 			raceIcons.centerY = verticalSpacing + raceIcons.height/2 + raceStatText.height / 2;
 			
 			//add tooltip
