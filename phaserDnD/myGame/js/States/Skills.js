@@ -18,7 +18,7 @@ Skills.prototype = {
 	{
 
 		var topText = game.add.text(game.world.centerX, 60, 
-			"Choose any " + SKILLS["Bard"].CHOOSE + " skills:", titleTextStyle);
+			"Choose any " + SKILLS[PROPERTIES.CLASS].CHOOSE + " skills:", titleTextStyle);
 		topText.anchor.x = 0.5;
 		topText.anchor.y = 0.5;
 
@@ -30,11 +30,11 @@ Skills.prototype = {
     	description.fontSize = "24px"; 
 		description.fontStyle = "italic";
 
-		// var skills = SKILLS[PROPERTIES.CLASS];
-		var skills = SKILLS["Bard"].SKILLS;
+		var skills = SKILLS[PROPERTIES.CLASS].SKILLS;
 
+		//add each skill
 		lineSpacing = 70;
-		width = 275;
+		width = 275; 
 		numCols = 3; 
 		totalHeight = 0; //to know where to put the continue button so it aint just floating way down there
 		for (var i = 0; i < skills.length; i++) {
@@ -57,7 +57,7 @@ Skills.prototype = {
 		continueButton.scale.setTo((continueText.width/BUTTON_WIDTH) + 0.15, (continueText.height/BUTTON_HEIGHT) + 0.3);
 
 		this.errorText = game.add.text(game.world.centerX, totalHeight + 95, "You need to select " +
-			SKILLS["Bard"].CHOOSE + " skills! ", titleTextStyle);
+			SKILLS[PROPERTIES.CLASS].CHOOSE + " skills! ", titleTextStyle);
 		this.errorText.anchor.x = 0.5;
 		this.errorText.anchor.y = 0.5;
 	    this.errorText.fontSize = 18;
@@ -67,16 +67,11 @@ Skills.prototype = {
 
 	onContinue: function(button, pointer, isOver)
 	{
-		if (PROPERTIES.SKILLS.length < SKILLS["Bard"].CHOOSE) {
+		if (PROPERTIES.SKILLS.length < SKILLS[PROPERTIES.CLASS].CHOOSE) {
 			this.errorText.alpha = 1; 
 		}
 		else if (isOver)
 		{
-			// for (skillButton in queue) { //queue is found in Skill.js
-			// 	console.log(skillButton);
-			// 	PROPERTIES.SKILLS.push(skillButton.skill);
-			// }
-			console.log(PROPERTIES);
 			game.state.start('End');
 		}
 	},

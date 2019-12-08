@@ -440,7 +440,7 @@ var SKILLS =
 	},
 	Barbarian: {
 		CHOOSE: 2,
-		SKILLS: ["Animal Handling","Athletics", "Intimidation", "Nature", "Percption", "Survival"]
+		SKILLS: ["Animal Handling","Athletics", "Intimidation", "Nature", "Perception", "Survival"]
 	},
 	Fighter: {
 		CHOOSE: 2,
@@ -473,7 +473,7 @@ var SKILLS =
 	},	
 	Cleric: {
 		CHOOSE: 2,
-		SKILLS: ["Athletics", "Insight", "Intimidiation", "Medicine", "Persuasion", "Religion"]
+		SKILLS: ["Athletics", "Insight", "Medicine", "Persuasion", "Religion"]
 	},
 	Rogue: {
 		CHOOSE: 4,
@@ -481,7 +481,10 @@ var SKILLS =
 			"Insight","Intimidation", "Investigation", "Perception",
 			"Persuasion", "Sleight of Hand", "Stealth"]
 	},
-
+	Ranger: {
+		CHOOSE: 3,
+		SKILLS: ["Animal Handling","Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"]
+	},
 }
 
 var SKILL_DESCRIPTIONS = {

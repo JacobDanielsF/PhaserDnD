@@ -109,8 +109,7 @@ function hover(skillButton) {
 
 function enqueue(skillButton){
    PROPERTIES.SKILLS.push(skillButton);
-   console.log(PROPERTIES.SKILLS.length);
-   if (PROPERTIES.SKILLS.length > SKILLS["Bard"].CHOOSE) //never choose over max amount of skills
+   if (PROPERTIES.SKILLS.length > SKILLS[PROPERTIES.CLASS].CHOOSE) //never choose over max amount of skills
        dequeue(); 
 }
 

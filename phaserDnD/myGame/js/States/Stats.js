@@ -9,7 +9,7 @@ Stats.prototype = {
 	{
 		if (isOver)
 		{
-			game.state.start('End');
+			game.state.start('Skills');
 		}
 	},
 
