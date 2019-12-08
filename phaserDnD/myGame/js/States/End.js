@@ -32,6 +32,8 @@ End.prototype = {
 			{
 				PROPERTIES.STATS[key] = 0;
 			}
+			
+			PROPERTIES.SKILLS = [];
 
 			game.state.start('Question');
 		}

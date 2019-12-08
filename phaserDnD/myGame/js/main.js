@@ -23,6 +23,7 @@ window.onload = function() {
 	game.state.add('End', End);
 	game.state.add('Stats', Stats);
 	game.state.add('Skills', Skills);
+	game.state.add('FinalResults', FinalResults);
 
 	game.state.start('Intro');
 };

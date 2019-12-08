@@ -6,13 +6,15 @@ Skills.prototype = {
 
 	},
 	
+	/*
 	onContinue: function(button, pointer, isOver)
 	{
 		if (isOver)
 		{
-			game.state.start('End');
+			game.state.start('FinalResults');
 		}
 	},
+	*/
 
 	create: function() 
 	{
@@ -74,7 +76,7 @@ Skills.prototype = {
 		}
 		else if (isOver)
 		{ 
-			game.state.start('End');
+			game.state.start('FinalResults');
 		}
 	},
 

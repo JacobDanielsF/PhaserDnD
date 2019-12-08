@@ -45,7 +45,7 @@ function RaceIcon(x, y, atlas, race, text, game)
         this.backRect.x = game.width - this.backRect.width - 10;
     }
     if (this.backRect.y + this.backRect.height > game.height) {
-        this.blurbText.y = game.height - this.blurbText.height - 20;
+        this.blurbText.y = game.height - this.blurbText.height - 15;
         this.backRect.y = game.height - this.backRect.height - 10;
     }
 }
@@ -77,7 +77,7 @@ RaceIcon.prototype.update = function()
             this.backRect.x = game.width - this.backRect.width - 10;
         }
         if (this.backRect.y + this.backRect.height > game.height) {
-            this.blurbText.y = game.height - this.blurbText.height - 20;
+            this.blurbText.y = game.height - this.blurbText.height - 15;
             this.backRect.y = game.height - this.backRect.height - 10;
         }
         if (this.backRect.x < 0) {
