@@ -26,6 +26,7 @@ End.prototype = {
 			PROPERTIES.QUESTION = 1;
 			PROPERTIES.CLASS = null;
 			PROPERTIES.RACE = null;
+			PROPERTIES.SKILLS = [];
 
 			for (var key in PROPERTIES.STATS)
 			{

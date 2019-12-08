@@ -22,6 +22,7 @@ window.onload = function() {
 	game.state.add('Race', Race);
 	game.state.add('End', End);
 	game.state.add('Stats', Stats);
+	game.state.add('Skills', Skills);
 
 	game.state.start('Intro');
 };
@@ -72,7 +73,9 @@ var PROPERTIES =
 		Intelligence: 0,
 		Wisdom: 0,
 		Charisma: 0,
-	}
+	},
+
+	SKILLS: [],
 };
 
 var CLASS_DESCRIPTIONS =
@@ -425,4 +428,97 @@ var ABILITY_SCORE =
 	['Half-orc']: [2, 0, 1, 0, 0, 0],
 	['Half-elf']: [0, 0, 0, 0, 0, 2],
 	Tiefling: [0, 0, 0, 1, 0, 2],
+}
+
+var SKILLS = 
+{
+	Bard: {
+		CHOOSE: 3,
+		SKILLS: ["Acrobatics", "Athletics", "Animal Handling", "Arcana", "Deception","History",
+			"Insight","Intimidation", "Investigation", "Medicine", "Nature", "Perception",
+			"Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"]
+	},
+	Barbarian: {
+		CHOOSE: 2,
+		SKILLS: ["Animal Handling","Athletics", "Intimidation", "Nature", "Percption", "Survival"]
+	},
+	Fighter: {
+		CHOOSE: 2,
+		SKILLS: ["Acrobatics", "Animal Handling", "Athletics", "History", "Insight", "Intimidation",
+			"Perception", "Survival"]
+	},
+	Monk: {
+		CHOOSE: 2,
+		SKILLS: ["Acrobatics", "Athletics", "History", "Insight", "Religion", "Stealth"]
+	},
+	Cleric: {
+		CHOOSE: 2,
+		SKILLS: ["History", "Insight", "Medicine", "Persuasion", "Religion"]
+	},
+	Wizard: {
+		CHOOSE: 2,
+		SKILLS: ["Arcana", "History", "Insight", "Investigation", "Medicine", "Religion"]
+	},
+	Druid: {
+		CHOOSE: 2,
+		SKILLS: ["Animal Handling", "Insight", "Medicine", "Nature", "Perception"]
+	},
+	Sorcerer: {
+		CHOOSE: 2,
+		SKILLS: ["Arcana", "Deception", "Insight", "Investigation", "Medicine", "Religion"]
+	},
+	Warlock: {
+		CHOOSE: 2,
+		SKILLS: ["Arcana", "Deception", "History", "Intimidation", "Investigation", "Nature", "Religion"]
+	},	
+	Cleric: {
+		CHOOSE: 2,
+		SKILLS: ["Athletics", "Insight", "Intimidiation", "Medicine", "Persuasion", "Religion"]
+	},
+	Rogue: {
+		CHOOSE: 4,
+		SKILLS: ["Acrobatics", "Athletics", "Deception",
+			"Insight","Intimidation", "Investigation", "Perception",
+			"Persuasion", "Sleight of Hand", "Stealth"]
+	},
+
+}
+
+var SKILL_DESCRIPTIONS = {
+	['Animal Handling']: "Your character's ability to calm or interact with an animal. Also helps them understand an animals’ intention. Examples include calming one’s horse and realizing an animal is scared.",
+
+	Insight: "Your character's ability to see another’s true intention. Examples include seeing through lies and guessing what someone is about to do.",
+
+	Medicine: "Your character's ability in medicine. Examples include diagnosing an illness, treating minor wounds, and stabilizing major injuries.",
+
+	Perception: "Your character's general awareness and keenness of senses. Examples include spotting an ambush, finding a secret door, and hearing someone sneaking up behind them.",
+
+	Survival: "Your character's ability to survive in the wilderness. Examples include tracking animals, guiding others through a wasteland, and predicting or avoiding natural hazards.",
+
+	Athletics: "Your character's ability in jumping, climbing, and swimming. Examples include swimming across a raging river, clinging to a creature trying to throw them off, and attempting any sort of extra difficult jump.",
+
+	Acrobatics: "Your character's ability to keep their balance and perform acrobatic stunts. Examples include performing a backflip, keeping balance on a slippery surface, and not falling while walking across a wooden beam.",
+
+	['Sleight of Hand']: "Your character's ability in general trickery with hands. Examples include concealing an object they are carrying, taking something from another’s pocket without their noticing, and subtly placing an object in a persons’ pocket.",
+
+	Stealth: "Your character's ability to conceal oneself. Examples include sneaking past guards, leaving a party without being noticed, and remaining unseen.",
+
+	Arcana: "Your character's knowledge of magical lore. Examples include recalling details about spells, eldritch symbols, the planes of existence, and magical items.",
+
+	History: "Your character's knowledge of historical events. Examples include recalling details about kings, wars, legends of the past, and past civilizations.",
+
+	Investigation: "Your character's ability to discern, understand, and draw conclusions from clues. Examples include figuring out the location of a hidden key, looking through a town registry for specific details, finding a structural weak point, and deducing what person a weapon belonged to.",
+
+	Nature: "Your character's knowledge of natural lore. Examples include recalling details about plants, geographical areas, and the weather.",
+
+	Religion: "Your character's knowledge of religious lore. Examples include recalling details about deities, a religion’s practices, religious symbols, and information about cults.",
+
+	Deception: "Your character's ability to hide the truth. Examples include misleading guards, proficiency at gambling, succeed at disguising oneself, or conning others.",
+
+	Intimidation: "Your character's ability to implicitly or explicitly threaten others. Examples include interrogating someone, threatening someone with a weapon, and overplaying how dangerous one can be.",
+
+	Performance: "Your character's ability to wow an audience. Examples include storytelling, dancing, and acting.",
+
+	Persuasion: "Your character's ability to socially influence others, generally in good faith. Examples include convincing someone to be a friend, requesting someone for aid, and persuading guards it is important they let you pass."
+
 }

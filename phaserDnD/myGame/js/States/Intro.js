@@ -44,7 +44,7 @@ Intro.prototype = {
 		if (isOver)
 		{
 			PROPERTIES.QUESTION++;
-			game.state.start('Question');
+			game.state.start('Skills');
 		}
 	},
 
