@@ -14,7 +14,7 @@ function QuestionMark(x, y, key, text, game) {
     this.backRect = game.add.image(x, y + 35, 'textBox');
 
     //add text
-    this.blurbText = game.add.text(x, y + 45, text, textStyle);
+    this.blurbText = game.add.text(x + 10, y + 45, text, textStyle);
     this.blurbText.fontSize = 18;
     this.blurbText.fill = '#EEE8FC';
     this.blurbText.wordWrap = true;
