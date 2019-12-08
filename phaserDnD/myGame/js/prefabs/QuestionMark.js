@@ -11,12 +11,14 @@ function QuestionMark(x, y, key, text, game) {
     this.pointerOver = false; 
 
     //add textbox image
-    this.backRect = game.add.image(x + 35, y + 35, 'textBox');
+    this.backRect = game.add.image(x, y + 35, 'textBox');
 
     //add text
-    this.blurbText = game.add.text(x + 45, y + 45, text, textStyle);
+    this.blurbText = game.add.text(x, y + 45, text, textStyle);
     this.blurbText.fontSize = 18;
     this.blurbText.fill = '#EEE8FC';
+    this.blurbText.wordWrap = true;
+    this.blurbText.wordWrapWidth = 400;
 
     //adjust textbox size to text
 	this.backRect.width = this.blurbText.width + 20;

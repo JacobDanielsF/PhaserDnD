@@ -430,6 +430,19 @@ var ABILITY_SCORE =
 	Tiefling: [0, 0, 0, 1, 0, 2],
 }
 
+var STAT_DESCRIPTIONS =
+{
+	Strength: "Measures physical prowess. Is your character a heavy lifter, or are they weak?",
+	Dexterity: "Measures agility. Is your character nimble and spry, or are they clumsy?",
+	Constitution: "Measures endurance. Does your character have good health and stamina, or are they sickly and weak?",
+	Intelligence: "Measures reasoning and memory. Is your character a fast learner, or are they forgetful and often act " +
+			"illogically?",
+	Wisdom: "Measures intuition and will power. Is your character in tune with their surroundings, or are they foolhardy" +
+			" and unaware of what is happening around them?",
+	Charisma: "Measures force of personality. Is your character incredibly charming" +
+			" or are they shy and awkward?"
+}
+
 var SKILLS = 
 {
 	Bard: {

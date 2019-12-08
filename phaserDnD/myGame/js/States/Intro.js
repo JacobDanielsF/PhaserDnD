@@ -4,6 +4,7 @@ Intro.prototype = {
 	preload: function() 
 	{
 		game.load.spritesheet('button', 'assets/img/button_sprite_sheet2.png', 193, 71);
+		game.load.image('background_texture', 'assets/img/background_texture.png');
 	},
 	
 	create: function() 
@@ -49,7 +50,9 @@ Intro.prototype = {
 	},
 
 	makeText: function() {
-
+		var background = game.add.image(0, 0, "background_texture");
+		background.alpha = .4;
+		
 		var title = game.add.text(game.world.centerX, standardTitleHeight - 20, 
 			"Welcome to DnD Helper!", titleTextStyle);
 		title.anchor.x = 0.5;

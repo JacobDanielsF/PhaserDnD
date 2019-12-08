@@ -3,6 +3,9 @@ Question.prototype = {
 
 	create: function()
 	{
+		var background = game.add.image(0, 0, "background_texture");
+		background.alpha = .4;
+
 		//console.log(PROPERTIES.CLASS_BUCKETS);
 		
 		//Add question text

@@ -11,7 +11,10 @@ Race.prototype = {
 	},
 
 	create: function()
-	{
+	{		
+		var background = game.add.image(0, 0, "background_texture");
+		background.alpha = .4;
+
 		//add title text
 		QText = game.add.text(game.world.centerX, 75, "Select your character's race!", titleTextStyle);
 		QText.anchor.x = 0.5;
@@ -57,7 +60,7 @@ Race.prototype = {
 			for (var j = 0; j < races.length; j++)
 			{
 				race = races[j];
-				var icon = new RaceIcon(xPosition, verticalSpacing + 50, 'races', race, game);
+				var icon = new RaceIcon(xPosition, verticalSpacing + 50, 'races', race, RACE_DESCRIPTIONS[race], game);
 				game.add.existing(icon);
 				icon.anchor.x = .5;
 				icon.anchor.y = .5; 
@@ -87,11 +90,14 @@ Race.prototype = {
 			
 			//add tooltip
 			//must be added AFTER align because otherwise the tooltip's text appears in wrong position
-			raceIcons.children.forEach(function(icon) {
-			    var qMark = new QuestionMark(icon.worldPosition.x-70, icon.worldPosition.y+verticalToolTipSpacing,'questionMark', 
-				RACE_DESCRIPTIONS[icon.race], game);
-				game.add.existing(qMark);
-			}, this);
+			// raceIcons.children.forEach(function(icon) {
+			//     var tooltip = new QuestionMark(icon.worldPosition.x-85, icon.worldPosition.y+120,'questionMark', 
+			// 			RACE_DESCRIPTIONS[icon.race], game);
+			//     tooltip.width = icon.width;
+			// 	tooltip.height = icon.height;
+			// 	tooltip.alpha = 0;
+			// 	game.add.existing(tooltip);
+			// }, this);
 			//when an icon is clicked, send to next scene and save race
 		}
 	},

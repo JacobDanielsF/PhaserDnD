@@ -7,6 +7,9 @@ Results.prototype = {
 	
 	create: function() 
 	{
+		var background = game.add.image(0, 0, "background_texture");
+		background.alpha = .4;
+
 		RText = game.add.text(game.world.centerX, standardTitleHeight - 20, "Your class results", titleTextStyle);
 		RText.anchor.x = 0.5;
 		RText.anchor.y = 0.5;

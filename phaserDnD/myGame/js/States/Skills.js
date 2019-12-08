@@ -16,6 +16,8 @@ Skills.prototype = {
 
 	create: function() 
 	{
+		var background = game.add.image(0, 0, "background_texture");
+		background.alpha = .4;
 
 		var topText = game.add.text(game.world.centerX, 60, 
 			"Choose any " + SKILLS[PROPERTIES.CLASS].CHOOSE + " skills:", titleTextStyle);
@@ -71,7 +73,7 @@ Skills.prototype = {
 			this.errorText.alpha = 1; 
 		}
 		else if (isOver)
-		{
+		{ 
 			game.state.start('End');
 		}
 	},

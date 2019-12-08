@@ -39,6 +39,9 @@ End.prototype = {
 	
 	create: function() 
 	{
+		var background = game.add.image(0, 0, "background_texture");
+		background.alpha = .4;
+
 		/*
 		//add title text
 		title = game.add.text(game.world.centerX, 165, "Your results:", titleTextStyle);

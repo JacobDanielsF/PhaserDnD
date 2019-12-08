@@ -2,7 +2,8 @@ var Stats = function(game) {};
 Stats.prototype = {
 	preload: function() 
 	{
-		
+				game.load.image('textBox', 'assets/img/textbox.png');
+
 	},
 	
 	onContinue: function(button, pointer, isOver)
@@ -14,7 +15,10 @@ Stats.prototype = {
 	},
 
 	create: function() 
-	{
+	{		
+		var background = game.add.image(0, 0, "background_texture");
+		background.alpha = .4;
+
 		//add input plugin
 		game.add.plugin(PhaserInput.Plugin);
 
@@ -73,33 +77,59 @@ Stats.prototype = {
 		
 		//console.log(newStats);
 		
-		var height = 60;
 		var text = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
 		
-		var topText = game.add.text(game.world.centerX, 100, 
+		var topText = game.add.text(game.world.centerX, 60, 
 			"Your ability scores:", titleTextStyle);
 		topText.anchor.x = 0.5;
 		topText.anchor.y = 0.5;
 		
+		var statsText = game.add.text(game.world.centerX, 125, 
+			"Stats describe your character's physical and mental prowess.\nStats range from 0-20, with 20 meaning your character is godly at that skill!", textStyle);
+		statsText.anchor.x = 0.5;
+		statsText.anchor.y = 0.5;
+    	statsText.fontSize = 26;
+
+		var statsText = game.add.text(game.world.centerX, 203, 
+			"The parenthesis next to each stat represent how much that stat helps\n(a positive number) " +
+			"or hinders (a negative number) your character.", textStyle);
+		statsText.anchor.x = 0.5;
+		statsText.anchor.y = 0.5;
+    	statsText.fontSize = 26;
+
+		statsText = game.add.text(game.world.centerX, 270, "Feel free to edit these stats! (Make sure to ask your Dungeon Master)!", textStyle);
+		statsText.fontSize = "22px"; 
+		statsText.fontStyle = "italic";
+		statsText.anchor.x = 0.5;
+		statsText.anchor.y = 0.5;
+
+		var height = 90;
+		numCols = 2; 
+		colWidth = 300; 
+		startX = 300;
 		for (let i = 0; i < 6; i++)
 		{
-			var labelText = game.add.text(game.world.centerX - 20, 320 - (height * 2.5) + (i * height), 
-				text[i], textStyle);
+			var labelText = game.add.text(startX + (colWidth * (i % numCols)) - 15, 330 + (height * Math.floor(i / numCols)), 
+				text[i] + ":", textStyle);
 			labelText.anchor.x = 1;
 			labelText.anchor.y = 0.5;
 			
 			//add in textbox and (+#) text
 			var adjustForInputHeight = 25;
-			var stat = new StatTextBox(game, game.world.centerX, 320 - (height * 2.5) + (i * height) - adjustForInputHeight,
+			var stat = new StatTextBox(game, startX + (colWidth * (i % numCols)), 330 + (height * Math.floor(i / numCols)) - adjustForInputHeight,
 			 newStats[i], text[i]);
 			game.add.existing(stat);
+
+			//add in tooltip on hover
+			var tooltip = new QuestionMark(startX + (colWidth * (i % numCols)) - labelText.width - 15, 330 + (height * Math.floor(i / numCols)) - 20,
+				'textBox', STAT_DESCRIPTIONS[text[i]], game);
+			tooltip.width = labelText.width;
+			tooltip.height = labelText.height;
+			tooltip.alpha = 0;
+			game.add.existing(tooltip);
+
 		}
 		
-		classText = game.add.text(game.world.centerX, 525, "Feel free to edit these stats! (Make sure to ask your Dungeon Master)!", textStyle);
-		classText.fontSize = "22px"; 
-		classText.fontStyle = "italic";
-		classText.anchor.x = 0.5;
-		classText.anchor.y = 0.5;
 
 		classText = game.add.text(game.world.centerX - 120, 575, "Class: " + PROPERTIES.CLASS, textStyle);
 		classText.anchor.x = 0.5;
@@ -115,7 +145,7 @@ Stats.prototype = {
 		button.anchor.y = 0.5;
 		button.alpha = .5;
 		
-		var text = game.add.text(game.world.centerX, 620 + 4, "Continue", titleTextStyle);
+		var text = game.add.text(game.world.centerX, 620 + 8, "Continue", titleTextStyle);
 		text.anchor.x = 0.5;
 		text.anchor.y = 0.5;
 		
